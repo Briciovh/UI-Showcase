@@ -1,12 +1,11 @@
 package com.example.uishowcase.navigation
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.uishowcase.ui.hub.HubScreen
+import com.example.uishowcase.ui.drape.DrapeScreen
 import com.example.uishowcase.ui.medicare.MediCareScreen
 import com.example.uishowcase.ui.tastique.TastiqueScreen
 
@@ -28,5 +27,3 @@ fun AppNavigation() {
     }
 }
 
-// Stub — replaced by dedicated file in PR 5
-@Composable private fun DrapeScreen(navController: NavController) { Text("Drape") }
