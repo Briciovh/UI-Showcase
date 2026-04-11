@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.uishowcase.ui.hub.HubScreen
+import com.example.uishowcase.ui.medicare.MediCareScreen
 import com.example.uishowcase.ui.tastique.TastiqueScreen
 
 object AppRoutes {
@@ -27,6 +28,5 @@ fun AppNavigation() {
     }
 }
 
-// Stubs — replaced by dedicated files in PRs 4–5
-@Composable private fun MediCareScreen(navController: NavController) { Text("MediCare") }
+// Stub — replaced by dedicated file in PR 5
 @Composable private fun DrapeScreen(navController: NavController) { Text("Drape") }
