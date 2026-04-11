@@ -53,6 +53,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.layout.ContentScale
+import coil.compose.AsyncImage
+import com.example.uishowcase.R
 
 // Private palette
 private val DrapeBg           = Color(0xFFFAF8F5)
@@ -82,17 +85,17 @@ private data class Product(
     val name: String,
     val price: String,
     val rating: Float,
-    val placeholderColor: Color,
+    val imageRes: Int,
     val isFavorite: Boolean
 )
 
 private val products = listOf(
-    Product("Linen Midi Dress",    "$189", 4.8f, Color(0xFFD7CCC8), isFavorite = true),
-    Product("Silk Wrap Top",       "$124", 4.7f, Color(0xFFB0BEC5), isFavorite = false),
-    Product("Wide Leg Trousers",   "$156", 4.6f, Color(0xFFCFD8DC), isFavorite = false),
-    Product("Cashmere Knit",       "$210", 4.9f, Color(0xFFBCAAA4), isFavorite = true),
-    Product("Leather Belt Bag",    "$98",  4.5f, Color(0xFFA1887F), isFavorite = false),
-    Product("Tailored Blazer",     "$275", 4.8f, Color(0xFF90A4AE), isFavorite = false),
+    Product("Linen Midi Dress",  "$189", 4.8f, R.drawable.dress,    isFavorite = true),
+    Product("Silk Wrap Top",     "$124", 4.7f, R.drawable.top,      isFavorite = false),
+    Product("Wide Leg Trousers", "$156", 4.6f, R.drawable.trousers, isFavorite = false),
+    Product("Cashmere Knit",     "$210", 4.9f, R.drawable.cashmere, isFavorite = true),
+    Product("Leather Belt Bag",  "$98",  4.5f, R.drawable.bag,      isFavorite = false),
+    Product("Tailored Blazer",   "$275", 4.8f, R.drawable.blazer,   isFavorite = false),
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -231,8 +234,13 @@ private fun ProductCard(
                 .fillMaxWidth()
                 .height(180.dp)
                 .clip(RoundedCornerShape(12.dp))
-                .background(product.placeholderColor)
         ) {
+            AsyncImage(
+                model = product.imageRes,
+                contentDescription = product.name,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.matchParentSize()
+            )
             IconButton(
                 onClick = onFavoriteToggle,
                 modifier = Modifier.align(Alignment.TopEnd)

@@ -46,8 +46,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import coil.compose.AsyncImage
+import com.example.uishowcase.R
 
 // Private palette
 private val TastiqueBg      = Color(0xFF0D0D0D)
@@ -78,15 +81,15 @@ private data class MenuItem(
     val name: String,
     val price: String,
     val rating: Float,
-    val placeholderColor: Color
+    val imageRes: Int
 )
 
 private val menuItems = listOf(
-    MenuItem("Truffle Risotto",      "$28", 4.9f, Color(0xFF5D4037)),
-    MenuItem("Lobster Linguine",     "$42", 4.8f, Color(0xFF4E342E)),
-    MenuItem("Wagyu Burger",         "$36", 4.7f, Color(0xFF6D4C41)),
-    MenuItem("Black Squid Pasta",    "$32", 4.6f, Color(0xFF37474F)),
-    MenuItem("Chocolate Lava Cake",  "$18", 4.9f, Color(0xFF4A148C)),
+    MenuItem("Truffle Risotto",     "$28", 4.9f, R.drawable.truffle_pasta),
+    MenuItem("Lobster Linguine",    "$42", 4.8f, R.drawable.lobster),
+    MenuItem("Wagyu Burger",        "$36", 4.7f, R.drawable.burguer),
+    MenuItem("Black Squid Pasta",   "$32", 4.6f, R.drawable.squid),
+    MenuItem("Chocolate Lava Cake", "$18", 4.9f, R.drawable.chocolate),
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -144,12 +147,13 @@ fun TastiqueScreen(navController: NavController) {
                             .padding(horizontal = 16.dp, vertical = 8.dp)
                             .height(220.dp)
                             .clip(RoundedCornerShape(16.dp))
-                            .background(
-                                Brush.linearGradient(
-                                    listOf(Color(0xFF1A1A1A), Color(0xFF3D2B00))
-                                )
-                            )
                     ) {
+                        AsyncImage(
+                            model = R.drawable.truffle_steak,
+                            contentDescription = null,
+                            contentScale = ContentScale.Crop,
+                            modifier = Modifier.fillMaxSize()
+                        )
                         // Amber badge top-right
                         Box(
                             modifier = Modifier
@@ -231,11 +235,13 @@ private fun MenuItemCard(item: MenuItem) {
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(12.dp)
     ) {
-        Box(
+        AsyncImage(
+            model = item.imageRes,
+            contentDescription = item.name,
+            contentScale = ContentScale.Crop,
             modifier = Modifier
                 .size(80.dp)
                 .clip(RoundedCornerShape(10.dp))
-                .background(item.placeholderColor)
         )
         Column(modifier = Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(4.dp)) {
             Text(item.name, style = MaterialTheme.typography.titleMedium, color = TastiqueOnBg)
