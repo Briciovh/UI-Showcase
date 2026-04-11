@@ -6,6 +6,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.uishowcase.ui.hub.HubScreen
 
 object AppRoutes {
     const val HUB = "hub"
@@ -25,8 +26,7 @@ fun AppNavigation() {
     }
 }
 
-// Stubs — replaced by dedicated files in PRs 2–5
-@Composable private fun HubScreen(navController: NavController) { Text("Hub") }
+// Stubs — replaced by dedicated files in PRs 3–5
 @Composable private fun TastiqueScreen(navController: NavController) { Text("Tastique") }
 @Composable private fun MediCareScreen(navController: NavController) { Text("MediCare") }
 @Composable private fun DrapeScreen(navController: NavController) { Text("Drape") }
