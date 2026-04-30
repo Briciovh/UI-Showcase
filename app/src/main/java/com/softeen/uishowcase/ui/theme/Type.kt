@@ -1,4 +1,4 @@
-package com.example.uishowcase.ui.theme
+﻿package com.softeen.uishowcase.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

@@ -1,4 +1,4 @@
-package com.example.uishowcase.ui.drape
+﻿package com.softeen.uishowcase.ui.drape
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -55,7 +55,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.layout.ContentScale
 import coil.compose.AsyncImage
-import com.example.uishowcase.R
+import com.softeen.uishowcase.R
 
 // Private palette
 private val DrapeBg           = Color(0xFFFAF8F5)

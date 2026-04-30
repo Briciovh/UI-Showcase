@@ -1,4 +1,4 @@
-package com.example.uishowcase.ui.tastique
+﻿package com.softeen.uishowcase.ui.tastique
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -50,7 +50,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import com.example.uishowcase.R
+import com.softeen.uishowcase.R
 
 // Private palette
 private val TastiqueBg      = Color(0xFF0D0D0D)

@@ -1,13 +1,13 @@
-package com.example.uishowcase.navigation
+﻿package com.softeen.uishowcase.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.uishowcase.ui.hub.HubScreen
-import com.example.uishowcase.ui.drape.DrapeScreen
-import com.example.uishowcase.ui.medicare.MediCareScreen
-import com.example.uishowcase.ui.tastique.TastiqueScreen
+import com.softeen.uishowcase.ui.hub.HubScreen
+import com.softeen.uishowcase.ui.drape.DrapeScreen
+import com.softeen.uishowcase.ui.medicare.MediCareScreen
+import com.softeen.uishowcase.ui.tastique.TastiqueScreen
 
 object AppRoutes {
     const val HUB = "hub"

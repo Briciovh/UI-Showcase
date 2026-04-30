@@ -1,4 +1,4 @@
-package com.example.uishowcase
+﻿package com.softeen.uishowcase
 
 import org.junit.Test
 

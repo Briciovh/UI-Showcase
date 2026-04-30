@@ -1,4 +1,4 @@
-package com.example.uishowcase.ui.hub
+﻿package com.softeen.uishowcase.ui.hub
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -28,10 +28,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.uishowcase.navigation.AppRoutes
-import com.example.uishowcase.ui.theme.DrapeCoral
-import com.example.uishowcase.ui.theme.MediCareTeal
-import com.example.uishowcase.ui.theme.TastiqueAmber
+import com.softeen.uishowcase.navigation.AppRoutes
+import com.softeen.uishowcase.ui.theme.DrapeCoral
+import com.softeen.uishowcase.ui.theme.MediCareTeal
+import com.softeen.uishowcase.ui.theme.TastiqueAmber
 
 @Composable
 fun HubScreen(navController: NavController) {

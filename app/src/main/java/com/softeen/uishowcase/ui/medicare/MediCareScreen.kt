@@ -1,4 +1,4 @@
-package com.example.uishowcase.ui.medicare
+﻿package com.softeen.uishowcase.ui.medicare
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -370,7 +370,7 @@ private fun DoctorCard(doctor: Doctor) {
                     modifier = Modifier.size(12.dp)
                 )
                 Text(doctor.rating.toString(), style = MaterialTheme.typography.labelSmall, color = MediCareSubtext)
-                Text("• ${doctor.experience}", style = MaterialTheme.typography.labelSmall, color = MediCareSubtext)
+                Text("â€¢ ${doctor.experience}", style = MaterialTheme.typography.labelSmall, color = MediCareSubtext)
             }
         }
     }
