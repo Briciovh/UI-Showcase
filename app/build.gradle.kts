@@ -8,7 +8,7 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.yourdomain.uishowcase" // TODO: Change to your unique domain
+        applicationId = "com.softeen.uishowcase"
         minSdk = 24
         targetSdk = 35 // Stick to stable SDK 35 unless specific 36 features are needed
         versionCode = gitCommitCount()
