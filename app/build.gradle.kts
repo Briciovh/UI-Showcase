@@ -11,8 +11,8 @@ android {
         applicationId = "com.yourdomain.uishowcase" // TODO: Change to your unique domain
         minSdk = 24
         targetSdk = 35 // Stick to stable SDK 35 unless specific 36 features are needed
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = gitCommitCount()
+        versionName = gitVersionName()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -71,3 +71,21 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 }
+
+fun gitCommitCount(): Int = try {
+    ProcessBuilder("git", "rev-list", "--count", "HEAD")
+        .directory(rootDir)
+        .redirectErrorStream(true)
+        .start()
+        .inputStream.bufferedReader().readText().trim()
+        .toIntOrNull() ?: 1
+} catch (_: Exception) { 1 }
+
+fun gitVersionName(): String = try {
+    ProcessBuilder("git", "describe", "--tags", "--always")
+        .directory(rootDir)
+        .redirectErrorStream(true)
+        .start()
+        .inputStream.bufferedReader().readText().trim()
+        .ifEmpty { "1.0.0" }
+} catch (_: Exception) { "1.0.0" }
