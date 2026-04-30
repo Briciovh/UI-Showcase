@@ -4,30 +4,42 @@ plugins {
 }
 
 android {
-    namespace = "com.example.uishowcase"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    namespace = "com.softeen.uishowcase"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.uishowcase"
+        applicationId = "com.yourdomain.uishowcase" // TODO: Change to your unique domain
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 35 // Stick to stable SDK 35 unless specific 36 features are needed
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            // These should ideally be stored in gradle.properties or environment variables
+            storeFile = file("release-key.jks")
+            storePassword = "your_store_password"
+            keyAlias = "your_key_alias"
+            keyPassword = "your_key_password"
+        }
+    }
+
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            signingConfig = signingConfigs.getByName("release")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        }
+        debug {
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
         }
     }
     compileOptions {
