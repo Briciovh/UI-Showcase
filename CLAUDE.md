@@ -46,6 +46,7 @@ Each showcase screen defines its own private `darkColorScheme`/`lightColorScheme
 | Tastique | Dark | Amber `0xFFFFB300` |
 | MediCare | Light | Teal `0xFF26A69A` |
 | Drape | Light | Coral `0xFFFF3D2E` |
+| Nexo  | Light | Blue `0xFF1B4FD8` + Orange accent `0xFFFF6B2C` |
 
 ### Image loading
 

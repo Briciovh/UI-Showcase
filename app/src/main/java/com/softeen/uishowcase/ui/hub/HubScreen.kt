@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.Star
@@ -31,6 +32,7 @@ import androidx.navigation.NavController
 import com.softeen.uishowcase.navigation.AppRoutes
 import com.softeen.uishowcase.ui.theme.DrapeCoral
 import com.softeen.uishowcase.ui.theme.MediCareTeal
+import com.softeen.uishowcase.ui.theme.NexoBlue
 import com.softeen.uishowcase.ui.theme.TastiqueAmber
 
 @Composable
@@ -68,6 +70,14 @@ fun HubScreen(navController: NavController) {
                 accentColor = DrapeCoral,
                 icon = Icons.Default.Star,
                 route = AppRoutes.DRAPE,
+                navController = navController
+            )
+            ShowcaseCard(
+                title = "Nexo",
+                industry = "Service Marketplace",
+                accentColor = NexoBlue,
+                icon = Icons.Default.Build,
+                route = AppRoutes.NEXO,
                 navController = navController
             )
         }
