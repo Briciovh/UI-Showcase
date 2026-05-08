@@ -47,6 +47,8 @@ Each showcase screen defines its own private `darkColorScheme`/`lightColorScheme
 | MediCare | Light | Teal `0xFF26A69A` |
 | Drape | Light | Coral `0xFFFF3D2E` |
 | Nexo  | Light | Blue `0xFF1B4FD8` + Orange accent `0xFFFF6B2C` |
+| Pericia | Light | Navy `0xFF0C2D6B` |
+| Cerka | Light | Violet `0xFF311B92` + Green accent `0xFF00C853` |
 
 ### Image loading
 
@@ -183,3 +185,89 @@ Un solo PR. **No se necesitan pantallas de detalle ni navegación adicional.** L
 - `navigation/AppNavigation.kt` — agregar ruta `PERICIA = "pericia"`
 - `ui/hub/HubScreen.kt` — agregar ShowcaseCard para Pericia
 - `ui/theme/Color.kt` — agregar `val PericiaNavy = Color(0xFF0C2D6B)`
+
+---
+
+## Plan: Pantalla "Cerka" — Marketplace de Servicios
+
+### Descripción
+
+Propuesta de UI en español para un marketplace de servicios a domicilio, estilo Uber/Glovo. Nombre de marca: **Cerka** (de "cerca" — servicios locales a tu alrededor). Tema claro premium con paleta violeta profundo + verde activo.
+
+Cubre los 3 requerimientos del brief:
+1. **Geolocalización** — mapa simulado con Canvas (cuadrícula de calles, pins de proveedores, ruta activa)
+2. **Múltiples perfiles** — tarjetas de proveedor con rating, distancia y ETA; pedido activo con tracking
+3. **Marketplace escalable** — categorías de servicio, proveedores cercanos, historial de pedidos
+
+### Tema y colores
+
+| Token | Hex | Uso |
+|---|---|---|
+| `CerkaFondo` | `0xFFF8F9FA` | Fondo general |
+| `CerkaPrimario` | `0xFF311B92` | Violeta profundo — TopAppBar, botones, badges |
+| `CerkaAcento` | `0xFF00C853` | Verde — estado activo/disponible, CTA secundarios |
+| `CerkaAmbar` | `0xFFFFB300` | Ámbar — rating stars, destacados |
+| `CerkaRojo` | `0xFFD50000` | Rojo — cancelado, no disponible |
+| `CerkaSurface` | `0xFFFFFFFF` | Fondo de tarjetas |
+| `CerkaSubtexto` | `0xFF757575` | Texto secundario |
+| `CerkaOnPrimario` | `0xFFFFFFFF` | Texto sobre violeta |
+
+Acento Hub card: `0xFF311B92`
+
+Tema privado: `CerkaTema` wrapping `MaterialTheme` con `lightColorScheme`.
+
+### Layout de la pantalla (LazyColumn de arriba hacia abajo)
+
+```
+TopAppBar
+  ← ArrowBack   "Cerka"   [🔔 Bell] [Avatar circle]
+  📍 "Colonia Del Valle, CDMX"  (subtítulo)
+
+1. MapaSimulado — Box altura fija (200dp) con Canvas:
+     cuadrícula de calles, pin usuario (centro), 3–4 pins de proveedores, línea de ruta activa
+
+2. TarjetaPedidoActivo
+     Proveedor asignado, avatar, ⭐ rating
+     "Llega en 8 min" + LinearProgressIndicator (estado del pedido)
+     Botones: Llamar / Ver detalle
+
+3. Categorías de servicio (LazyRow de ChipCategoria)
+     Mensajería · Mudanza · Limpieza · Plomería · Electricidad · Más
+
+4. Sección "Proveedores cercanos"
+     LazyRow de TarjetaProveedor:
+       avatar, nombre, especialidad, ⭐ rating, distancia, ETA, precio base
+
+5. Sección "Mis pedidos recientes"
+     FilaPedido × 3: ícono servicio, proveedor, fecha, monto, badge estado
+```
+
+### Composables privados
+
+| Composable | Responsabilidad |
+|---|---|
+| `MapaSimulado` | Box + Canvas: cuadrícula de calles, pins, ruta |
+| `TarjetaPedidoActivo` | Proveedor asignado, ETA, progress bar, botones |
+| `ChipCategoria` | Ícono + label para LazyRow de categorías |
+| `TarjetaProveedor` | Avatar, rating, distancia, ETA, precio base |
+| `FilaPedido` | Fila compacta de historial con badge de estado |
+
+### Fake data
+
+- 4 proveedores cercanos (Mensajería, Limpieza, Mudanza, Plomería — distintos ratings, distancias, ETAs)
+- 1 pedido activo en progreso (proveedor asignado, 8 min ETA, 60% progreso)
+- 3 pedidos recientes con distintos estados (Completado, Cancelado, En camino)
+- 5 categorías de servicio con `Icons.Default.*`
+
+### Archivos a crear/modificar
+
+| Archivo | Acción |
+|---|---|
+| `ui/cerka/CerkaScreen.kt` | **Crear** — pantalla completa autocontenida |
+| `navigation/AppNavigation.kt` | **Modificar** — agregar ruta `CERKA = "cerka"` |
+| `ui/hub/HubScreen.kt` | **Modificar** — agregar ShowcaseCard para Cerka |
+| `ui/theme/Color.kt` | **Modificar** — agregar `val CerkaAccent = Color(0xFF311B92)` |
+
+### Alcance
+
+Un solo PR. Pantalla completamente autocontenida con dummy data hardcodeada en el mismo archivo. El `MapaSimulado` usa solo Canvas de Compose — sin Google Maps ni SDKs externos. No se requiere lógica de estado más allá del scroll.
