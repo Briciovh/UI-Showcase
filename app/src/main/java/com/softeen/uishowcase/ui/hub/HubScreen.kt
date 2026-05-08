@@ -4,12 +4,15 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Build
@@ -33,6 +36,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.softeen.uishowcase.navigation.AppRoutes
 import com.softeen.uishowcase.ui.theme.CerkaViolet
+import com.softeen.uishowcase.ui.theme.ChispaRose
 import com.softeen.uishowcase.ui.theme.DrapeCoral
 import com.softeen.uishowcase.ui.theme.MediCareTeal
 import com.softeen.uishowcase.ui.theme.NexoBlue
@@ -41,65 +45,41 @@ import com.softeen.uishowcase.ui.theme.TastiqueAmber
 
 @Composable
 fun HubScreen(navController: NavController) {
+    val cards = listOf(
+        Triple("Tastique",  "Food Delivery",               TastiqueAmber to (Icons.Default.ShoppingCart to AppRoutes.TASTIQUE)),
+        Triple("MediCare",  "Healthcare",                   MediCareTeal  to (Icons.Default.Favorite     to AppRoutes.MEDICARE)),
+        Triple("Drape",     "Fashion Retail",               DrapeCoral    to (Icons.Default.Star          to AppRoutes.DRAPE)),
+        Triple("Nexo",      "Service Marketplace",          NexoBlue      to (Icons.Default.Build         to AppRoutes.NEXO)),
+        Triple("Pericia",   "Seguimiento de Siniestros",    PericiaNavy   to (Icons.Default.Info          to AppRoutes.PERICIA)),
+        Triple("Cerka",     "Marketplace de Servicios",     CerkaViolet   to (Icons.Default.Person        to AppRoutes.CERKA)),
+        Triple("Chispa",    "App de Citas",                 ChispaRose    to (Icons.Default.Favorite      to AppRoutes.CHISPA)),
+    )
     Scaffold { innerPadding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-                .padding(24.dp),
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(
+                start = 24.dp, end = 24.dp,
+                top = innerPadding.calculateTopPadding() + 24.dp,
+                bottom = innerPadding.calculateBottomPadding() + 24.dp
+            ),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            Text("UI Showcase", style = MaterialTheme.typography.headlineMedium)
-            Text("Select a demo", style = MaterialTheme.typography.bodyMedium)
-
-            ShowcaseCard(
-                title = "Tastique",
-                industry = "Food Delivery",
-                accentColor = TastiqueAmber,
-                icon = Icons.Default.ShoppingCart,
-                route = AppRoutes.TASTIQUE,
-                navController = navController
-            )
-            ShowcaseCard(
-                title = "MediCare",
-                industry = "Healthcare",
-                accentColor = MediCareTeal,
-                icon = Icons.Default.Favorite,
-                route = AppRoutes.MEDICARE,
-                navController = navController
-            )
-            ShowcaseCard(
-                title = "Drape",
-                industry = "Fashion Retail",
-                accentColor = DrapeCoral,
-                icon = Icons.Default.Star,
-                route = AppRoutes.DRAPE,
-                navController = navController
-            )
-            ShowcaseCard(
-                title = "Nexo",
-                industry = "Service Marketplace",
-                accentColor = NexoBlue,
-                icon = Icons.Default.Build,
-                route = AppRoutes.NEXO,
-                navController = navController
-            )
-            ShowcaseCard(
-                title = "Pericia",
-                industry = "Seguimiento de Siniestros",
-                accentColor = PericiaNavy,
-                icon = Icons.Default.Info,
-                route = AppRoutes.PERICIA,
-                navController = navController
-            )
-            ShowcaseCard(
-                title = "Cerka",
-                industry = "Marketplace de Servicios",
-                accentColor = CerkaViolet,
-                icon = Icons.Default.Person,
-                route = AppRoutes.CERKA,
-                navController = navController
-            )
+            item {
+                Text("UI Showcase", style = MaterialTheme.typography.headlineMedium)
+                Text("Select a demo", style = MaterialTheme.typography.bodyMedium)
+            }
+            items(cards) { (title, industry, rest) ->
+                val (accent, iconRoute) = rest
+                val (icon, route) = iconRoute
+                ShowcaseCard(
+                    title = title,
+                    industry = industry,
+                    accentColor = accent,
+                    icon = icon,
+                    route = route,
+                    navController = navController
+                )
+            }
         }
     }
 }

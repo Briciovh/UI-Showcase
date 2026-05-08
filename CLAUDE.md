@@ -49,6 +49,7 @@ Each showcase screen defines its own private `darkColorScheme`/`lightColorScheme
 | Nexo  | Light | Blue `0xFF1B4FD8` + Orange accent `0xFFFF6B2C` |
 | Pericia | Light | Navy `0xFF0C2D6B` |
 | Cerka | Light | Violet `0xFF311B92` + Green accent `0xFF00C853` |
+| Chispa | Dark | Rose `0xFFFF4B81` + Sunset orange `0xFFFF8C42` |
 
 ### Image loading
 
@@ -271,3 +272,162 @@ TopAppBar
 ### Alcance
 
 Un solo PR. Pantalla completamente autocontenida con dummy data hardcodeada en el mismo archivo. El `MapaSimulado` usa solo Canvas de Compose — sin Google Maps ni SDKs externos. No se requiere lógica de estado más allá del scroll.
+
+---
+
+## Plan: Pantalla "Chispa" — App de Citas
+
+### Descripción
+
+Propuesta de UI en español para una app de citas tipo Tinder enfocada en Mallorca. Nombre de marca: **Chispa** (spark — metáfora del flechazo). Tema **oscuro premium** con paleta rosa/coral + naranja atardecer, para que las fotos de perfil destaquen al máximo sobre fondo profundo.
+
+Cubre los requerimientos del brief MVP:
+1. **Perfil visual** — tarjeta de perfil con foto grande, nombre, edad, ciudad, verificación e intereses
+2. **Sistema de matching swipe** — stack de tarjetas apiladas con botones Like / No / Super Like
+3. **Matches recientes** — carrusel horizontal con borde degradado y badge "NUEVO"
+4. **Chat / mensajes** — lista de conversaciones con estado online y no-leídos
+5. **Sección Premium** — preview borroso de "quién te dio Like" con CTA de suscripción
+
+### Tema y colores
+
+| Token | Hex | Uso |
+|---|---|---|
+| `ChispaFondo` | `0xFF0F0F1A` | Fondo oscuro profundo |
+| `ChispaPrimario` | `0xFFFF4B81` | Rosa-coral — botón Like, badges activos, acentos |
+| `ChispaAcento` | `0xFFFF8C42` | Naranja atardecer — degradados, highlights |
+| `ChispaSuperLike` | `0xFF00CFFD` | Cyan brillante — botón Super Like |
+| `ChispaSurface` | `0xFF1C1C2E` | Fondo de tarjetas y secciones |
+| `ChispaSurface2` | `0xFF2A2A3E` | Fondo alternativo (filas de mensajes) |
+| `ChispaSubtexto` | `0xFF9E9EBE` | Texto secundario |
+| `ChispaOnline` | `0xFF4CAF50` | Dot de estado online |
+| `ChispaOnPrimario` | `0xFFFFFFFF` | Texto sobre primario |
+
+Acento Hub card: `0xFFFF4B81`
+
+Tema privado: `ChispaTema` wrapping `MaterialTheme` con `darkColorScheme`.
+
+### Data classes
+
+```kotlin
+data class PerfilCitas(
+    val nombre: String,
+    val edad: Int,
+    val ciudad: String,
+    val distanciaKm: String,
+    val descripcion: String,
+    val intereses: List<String>,
+    val verificado: Boolean,
+    val fotoRes: Int?   // R.drawable.* o null → fallback inicial
+)
+
+data class MatchCitas(
+    val nombre: String,
+    val fotoRes: Int?,
+    val esNuevo: Boolean
+)
+
+data class ConversacionCitas(
+    val nombre: String,
+    val fotoRes: Int?,
+    val ultimoMensaje: String,
+    val hora: String,
+    val noLeidos: Int,
+    val online: Boolean
+)
+```
+
+### Layout de la pantalla (LazyColumn de arriba hacia abajo)
+
+```
+TopAppBar (fondo ChispaSurface, sin sombra)
+  ← ArrowBack   🔥 "Chispa"   [🔔 Bell] [Tune filtros]
+
+1. StackTarjetasPerfil — Box apilado altura fija ~520dp:
+     Tarjeta 3 (atrás): rotada +6°, escala 0.88, opacidad 0.55
+     Tarjeta 2 (medio): rotada -3°, escala 0.94, opacidad 0.80
+     Tarjeta 1 (frente): foto full-width, gradient oscuro en la parte inferior
+       ├── Badge distancia (top-right): "1.2 km"
+       ├── Badge verificado (top-left): ícono check + "Verificada"
+       ├── Nombre + edad: "Elena García, 26"
+       ├── Ciudad: "📍 Palma de Mallorca"
+       └── Chips de intereses: "🏄 Surf"  "📸 Foto"  "🍷 Gastro"
+
+2. BotonesAccion — Row centrado (espaciado proporcional):
+     CircleButton 56dp gris-oscuro: ✕  (No me interesa)
+     CircleButton 44dp cyan:        ⭐  (Super Like)
+     CircleButton 56dp rosa-coral:  ♥  (Me gusta)
+
+3. Sección "Nuevos matches ✨"
+     LazyRow de BurbujaMatch × 6:
+       foto circular 72dp + borde degradado rosa→naranja
+       nombre debajo (12sp)
+       badge "NUEVO" en forma de pill en los 2 más recientes
+
+4. Sección "Mensajes"
+     FilaMensaje × 4:
+       avatar 52dp + dot online (verde o gris)
+       columna: nombre (bold) + último mensaje truncado
+       hora + badge count no-leídos si > 0
+
+5. Sección "¿Quién te gustó? 🔒" (Premium)
+     Row de 3 avatares 72dp con Modifier.blur(8.dp) + ícono candado encima
+     Card ChispaSurface con texto "Desbloquea con Premium"
+     Botón filled rosa: "Ver quién te dio Like"
+```
+
+### Composables privados
+
+| Composable | Responsabilidad |
+|---|---|
+| `StackTarjetasPerfil` | Box con 3 `TarjetaPerfil` apiladas con offset/rotate/scale |
+| `TarjetaPerfil` | Foto (o fallback color+inicial), gradient overlay, badges, info, chips |
+| `AvatarConFallback` | `Image(painterResource)` si fotoRes != null; círculo coloreado + inicial si null |
+| `BotonesAccion` | Row de 3 `CircleButton` (No / SuperLike / Like) con tamaños y colores distintos |
+| `BurbujaMatch` | Avatar circular con borde `Brush` gradiente + nombre + badge "NUEVO" opcional |
+| `FilaMensaje` | Avatar + dot online + nombre + preview mensaje + hora + badge no-leídos |
+| `SeccionPremiumBlur` | 3 avatares con `blur` + candado + CTA card |
+
+### Fake data
+
+**Stack de perfiles (3 tarjetas)**
+- Elena García, 26, Palma, 1.2 km — verificada — intereses: Surf, Fotografía, Gastronomía, Buceo — foto: `R.drawable.chispa_elena`
+- Sofía Ruiz, 29, Inca, 8.5 km — intereses: Cocina, Yoga, Viajes — foto: `R.drawable.chispa_sofia`
+- Ana Torres, 24, Alcúdia, 15.3 km — intereses: Buceo, Música, Arte — foto: `R.drawable.chispa_ana`
+
+**Matches recientes (6)**
+- Elena → esNuevo = true, foto: `chispa_elena`
+- Martina → esNuevo = true, foto: `chispa_martina`
+- Camila → foto: `chispa_camila`
+- Sara → foto: `chispa_sara`
+- Laura → foto: null (fallback inicial "L")
+- Isabel → foto: null (fallback inicial "I")
+
+**Conversaciones (4)**
+1. Martina — "¿Te gustan los atardeceres en Cap Formentor? 🌅" — 5 min — 2 no leídos — online
+2. Camila — "¡Claro que sí! ¿Cuándo quedamos? 😊" — 1h — 0 no leídos — offline
+3. Sara — "Hola! Vi que también te gusta el buceo 🤿" — 3h — 1 no leído — online
+4. Camila R. — "Genial conocerte!" — ayer — 0 no leídos — offline
+
+### Recursos de imagen necesarios
+
+Agregar en `res/drawable/` antes de implementar (o dejar `fotoRes = null` para usar fallback de iniciales):
+- `chispa_elena.jpg` — perfil frontal del stack
+- `chispa_sofia.jpg` — perfil medio del stack
+- `chispa_ana.jpg` — perfil trasero del stack
+- `chispa_martina.jpg`, `chispa_camila.jpg`, `chispa_sara.jpg` — matches/conversaciones
+
+La pantalla **funciona sin imágenes** gracias al composable `AvatarConFallback` (muestra un círculo con color generado desde el nombre + inicial centrada).
+
+### Archivos a crear/modificar
+
+| Archivo | Acción |
+|---|---|
+| `ui/chispa/ChispaScreen.kt` | **Crear** — pantalla completa autocontenida |
+| `navigation/AppNavigation.kt` | **Modificar** — agregar ruta `CHISPA = "chispa"` |
+| `ui/hub/HubScreen.kt` | **Modificar** — agregar ShowcaseCard para Chispa |
+| `ui/theme/Color.kt` | **Modificar** — agregar `val ChispaAccent = Color(0xFFFF4B81)` |
+| `res/drawable/` | **Agregar** (opcional) — fotos de perfil para máximo impacto visual |
+
+### Alcance
+
+Un solo PR. Pantalla completamente autocontenida con dummy data hardcodeada. No se requieren SDKs externos ni animaciones de swipe reales — el efecto de stack se logra con `graphicsLayer { rotationZ = ...; scaleX = ...; scaleY = ... }`. La sección Premium usa `Modifier.blur()` disponible en Compose desde API 31 (min SDK del proyecto es 24, por lo que se aplica solo en >= API 31 con un `if (Build.VERSION.SDK_INT >= 31)` fallback).
