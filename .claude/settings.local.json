@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(./gradlew assembleDebug)",
-      "Bash(./gradlew compileDebugKotlin)"
+      "Bash(./gradlew compileDebugKotlin)",
+      "Bash(New-Item -ItemType Directory -Force -Path \"C:\\\\Users\\\\brici\\\\code\\\\UIShowcase\\\\app\\\\src\\\\main\\\\java\\\\com\\\\softeen\\\\uishowcase\\\\ui\\\\chispa\")",
+      "Bash(Out-Null)"
     ]
   }
 }
