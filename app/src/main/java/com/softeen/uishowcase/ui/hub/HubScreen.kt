@@ -15,6 +15,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
@@ -31,6 +32,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.softeen.uishowcase.navigation.AppRoutes
+import com.softeen.uishowcase.ui.theme.CerkaViolet
 import com.softeen.uishowcase.ui.theme.DrapeCoral
 import com.softeen.uishowcase.ui.theme.MediCareTeal
 import com.softeen.uishowcase.ui.theme.NexoBlue
@@ -88,6 +90,14 @@ fun HubScreen(navController: NavController) {
                 accentColor = PericiaNavy,
                 icon = Icons.Default.Info,
                 route = AppRoutes.PERICIA,
+                navController = navController
+            )
+            ShowcaseCard(
+                title = "Cerka",
+                industry = "Marketplace de Servicios",
+                accentColor = CerkaViolet,
+                icon = Icons.Default.Person,
+                route = AppRoutes.CERKA,
                 navController = navController
             )
         }

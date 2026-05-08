@@ -10,6 +10,7 @@ import com.softeen.uishowcase.ui.medicare.MediCareScreen
 import com.softeen.uishowcase.ui.tastique.TastiqueScreen
 import com.softeen.uishowcase.ui.nexo.NexoScreen
 import com.softeen.uishowcase.ui.pericia.PericiaScreen
+import com.softeen.uishowcase.ui.cerka.CerkaScreen
 
 object AppRoutes {
     const val HUB = "hub"
@@ -18,6 +19,7 @@ object AppRoutes {
     const val DRAPE = "drape"
     const val NEXO = "nexo"
     const val PERICIA = "pericia"
+    const val CERKA = "cerka"
 }
 
 @Composable
@@ -30,6 +32,7 @@ fun AppNavigation() {
         composable(AppRoutes.DRAPE)    { DrapeScreen(navController) }
         composable(AppRoutes.NEXO)    { NexoScreen(navController) }
         composable(AppRoutes.PERICIA) { PericiaScreen(navController) }
+        composable(AppRoutes.CERKA)   { CerkaScreen(navController) }
     }
 }
 
