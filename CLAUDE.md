@@ -65,6 +65,8 @@ Coil (`AsyncImage`) is used for image loading. Version pinned in `gradle/libs.ve
 - **Product grid in Drape**: uses `Column { products.chunked(2).forEach { row -> Row { ... weight(1f) } } }` to avoid nested lazy layouts
 - **`BorderStroke`**: `import androidx.compose.foundation.BorderStroke`
 - **`Brush` gradients**: `import androidx.compose.ui.graphics.Brush`
+- **Tool Usage**: Always use `replace_file_content` or `multi_replace_file_content` for surgical edits. NEVER use `run_shell_command` with `sed` or `awk` to modify files.
+- **Language**: Use Spanish for domain-specific labels in new screens (Pericia, Cerka, Chispa, Nexo) while keeping code/comments in English where appropriate.
 
 ---
 

@@ -34,6 +34,26 @@ A polished collection of distinct UI design systems implemented in Jetpack Compo
 - **Accent**: Coral (`#FF3D2E`)
 - **Vibe**: Bold, minimalist, and editorial.
 
+### 🔗 Nexo (Light Mode)
+*Focus: Service Marketplace*
+- **Accent**: Blue (`#1B4FD8`)
+- **Vibe**: Professional, reliable, and modern.
+
+### 🛡️ Pericia (Light Mode)
+*Focus: Claims Tracking & Insurance*
+- **Accent**: Navy (`#0C2D6B`)
+- **Vibe**: Trustworthy, clinical, and efficient.
+
+### 📍 Cerka (Light Mode)
+*Focus: Local Services Marketplace*
+- **Accent**: Violet (`#311B92`)
+- **Vibe**: Premium, active, and accessible.
+
+### 🔥 Chispa (Dark Mode)
+*Focus: Dating & Social*
+- **Accent**: Rose (`#FF4B81`)
+- **Vibe**: Vibrant, premium, and engaging.
+
 ---
 
 ## 🛠 Tech Stack
