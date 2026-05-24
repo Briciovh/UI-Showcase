@@ -12,6 +12,8 @@ import com.softeen.uishowcase.ui.nexo.NexoScreen
 import com.softeen.uishowcase.ui.pericia.PericiaScreen
 import com.softeen.uishowcase.ui.cerka.CerkaScreen
 import com.softeen.uishowcase.ui.chispa.ChispaScreen
+import com.softeen.uishowcase.ui.vortex.VortexListScreen
+import com.softeen.uishowcase.ui.vortex.VortexChatScreen
 
 object AppRoutes {
     const val HUB = "hub"
@@ -22,20 +24,24 @@ object AppRoutes {
     const val PERICIA = "pericia"
     const val CERKA = "cerka"
     const val CHISPA = "chispa"
+    const val VORTEX_LIST = "vortex_list"
+    const val VORTEX_CHAT = "vortex_chat"
 }
 
 @Composable
 fun AppNavigation() {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = AppRoutes.HUB) {
-        composable(AppRoutes.HUB)      { HubScreen(navController) }
-        composable(AppRoutes.TASTIQUE) { TastiqueScreen(navController) }
-        composable(AppRoutes.MEDICARE) { MediCareScreen(navController) }
-        composable(AppRoutes.DRAPE)    { DrapeScreen(navController) }
-        composable(AppRoutes.NEXO)    { NexoScreen(navController) }
-        composable(AppRoutes.PERICIA) { PericiaScreen(navController) }
-        composable(AppRoutes.CERKA)   { CerkaScreen(navController) }
-        composable(AppRoutes.CHISPA)  { ChispaScreen(navController) }
+        composable(AppRoutes.HUB)        { HubScreen(navController) }
+        composable(AppRoutes.TASTIQUE)   { TastiqueScreen(navController) }
+        composable(AppRoutes.MEDICARE)   { MediCareScreen(navController) }
+        composable(AppRoutes.DRAPE)      { DrapeScreen(navController) }
+        composable(AppRoutes.NEXO)       { NexoScreen(navController) }
+        composable(AppRoutes.PERICIA)    { PericiaScreen(navController) }
+        composable(AppRoutes.CERKA)      { CerkaScreen(navController) }
+        composable(AppRoutes.CHISPA)     { ChispaScreen(navController) }
+        composable(AppRoutes.VORTEX_LIST){ VortexListScreen(navController) }
+        composable(AppRoutes.VORTEX_CHAT){ VortexChatScreen(navController) }
     }
 }
 
