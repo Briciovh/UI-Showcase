@@ -22,6 +22,7 @@ import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.automirrored.filled.Send
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -46,6 +47,7 @@ import com.softeen.uishowcase.ui.theme.PericiaNavy
 import com.softeen.uishowcase.ui.theme.TastiqueAmber
 import com.softeen.uishowcase.ui.theme.VortexCyan
 import com.softeen.uishowcase.ui.theme.VigiaBlue
+import com.softeen.uishowcase.ui.theme.PortonBlue
 
 @Composable
 fun HubScreen(navController: NavController) {
@@ -59,6 +61,7 @@ fun HubScreen(navController: NavController) {
         Triple("Chispa",    "App de Citas",                 ChispaRose    to (Icons.Default.Favorite      to AppRoutes.CHISPA)),
         Triple("Vórtex",    "Instant Messaging",            VortexCyan    to (Icons.AutoMirrored.Filled.Send  to AppRoutes.VORTEX_LIST)),
         Triple("Vigía",     "Seguridad Infantil",           VigiaBlue     to (Icons.Default.LocationOn        to AppRoutes.VIGIA)),
+        Triple("Portón",    "Acceso Vecinal",               PortonBlue    to (Icons.Default.Lock              to AppRoutes.PORTON)),
     )
     Scaffold { innerPadding ->
         LazyColumn(
