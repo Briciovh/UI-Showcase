@@ -14,6 +14,7 @@ import com.softeen.uishowcase.ui.cerka.CerkaScreen
 import com.softeen.uishowcase.ui.chispa.ChispaScreen
 import com.softeen.uishowcase.ui.vortex.VortexListScreen
 import com.softeen.uishowcase.ui.vortex.VortexChatScreen
+import com.softeen.uishowcase.ui.vigia.VigiaScreen
 
 object AppRoutes {
     const val HUB = "hub"
@@ -26,6 +27,7 @@ object AppRoutes {
     const val CHISPA = "chispa"
     const val VORTEX_LIST = "vortex_list"
     const val VORTEX_CHAT = "vortex_chat"
+    const val VIGIA = "vigia"
 }
 
 @Composable
@@ -42,6 +44,7 @@ fun AppNavigation() {
         composable(AppRoutes.CHISPA)     { ChispaScreen(navController) }
         composable(AppRoutes.VORTEX_LIST){ VortexListScreen(navController) }
         composable(AppRoutes.VORTEX_CHAT){ VortexChatScreen(navController) }
+        composable(AppRoutes.VIGIA)      { VigiaScreen(navController) }
     }
 }
 

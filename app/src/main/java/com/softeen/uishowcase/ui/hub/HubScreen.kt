@@ -18,6 +18,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Build
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.automirrored.filled.Send
@@ -44,6 +45,7 @@ import com.softeen.uishowcase.ui.theme.NexoBlue
 import com.softeen.uishowcase.ui.theme.PericiaNavy
 import com.softeen.uishowcase.ui.theme.TastiqueAmber
 import com.softeen.uishowcase.ui.theme.VortexCyan
+import com.softeen.uishowcase.ui.theme.VigiaBlue
 
 @Composable
 fun HubScreen(navController: NavController) {
@@ -55,7 +57,8 @@ fun HubScreen(navController: NavController) {
         Triple("Pericia",   "Seguimiento de Siniestros",    PericiaNavy   to (Icons.Default.Info          to AppRoutes.PERICIA)),
         Triple("Cerka",     "Marketplace de Servicios",     CerkaViolet   to (Icons.Default.Person        to AppRoutes.CERKA)),
         Triple("Chispa",    "App de Citas",                 ChispaRose    to (Icons.Default.Favorite      to AppRoutes.CHISPA)),
-        Triple("Vórtex",    "Instant Messaging",            VortexCyan    to (Icons.AutoMirrored.Filled.Send to AppRoutes.VORTEX_LIST)),
+        Triple("Vórtex",    "Instant Messaging",            VortexCyan    to (Icons.AutoMirrored.Filled.Send  to AppRoutes.VORTEX_LIST)),
+        Triple("Vigía",     "Seguridad Infantil",           VigiaBlue     to (Icons.Default.LocationOn        to AppRoutes.VIGIA)),
     )
     Scaffold { innerPadding ->
         LazyColumn(
