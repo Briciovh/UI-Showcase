@@ -41,15 +41,18 @@ Android app using **Jetpack Compose** + Material3. Single module (`:app`). Packa
 
 Each showcase screen defines its own private `darkColorScheme`/`lightColorScheme` and a private `XxxTheme` composable wrapping its `MaterialTheme`. The root `UIShowcaseTheme` is used only for the Hub screen.
 
-| Screen | Theme type | Accent |
-|---|---|---|
-| Tastique | Dark | Amber `0xFFFFB300` |
-| MediCare | Light | Teal `0xFF26A69A` |
-| Drape | Light | Coral `0xFFFF3D2E` |
-| Nexo  | Light | Blue `0xFF1B4FD8` + Orange accent `0xFFFF6B2C` |
-| Pericia | Light | Navy `0xFF0C2D6B` |
-| Cerka | Light | Violet `0xFF311B92` + Green accent `0xFF00C853` |
-| Chispa | Dark | Rose `0xFFFF4B81` + Sunset orange `0xFFFF8C42` |
+| Screen | Package | Theme type | Accent |
+|---|---|---|---|
+| Tastique | `ui/tastique/` | Dark | Amber `0xFFFFB300` |
+| MediCare | `ui/medicare/` | Light | Teal `0xFF26A69A` |
+| Drape | `ui/drape/` | Light | Coral `0xFFFF3D2E` |
+| Nexus | `ui/nexus/` | Light | Blue `0xFF1B4FD8` + Orange `0xFFFF6B2C` |
+| Expert | `ui/expert/` | Light | Navy `0xFF0C2D6B` |
+| Near | `ui/near/` | Light | Violet `0xFF311B92` + Green `0xFF00C853` |
+| Spark | `ui/spark/` | Dark | Rose `0xFFFF4B81` + Sunset orange `0xFFFF8C42` |
+| Vortex | `ui/vortex/` | Dark | Cyan `0xFF00D4FF` + Purple `0xFF7C3AED` |
+| Sentry | `ui/sentry/` | Light | Blue `0xFF1565C0` |
+| Portal | `ui/portal/` | Light | Blue `0xFF1565C0` |
 
 ### Image loading
 
@@ -66,7 +69,41 @@ Coil (`AsyncImage`) is used for image loading. Version pinned in `gradle/libs.ve
 - **`BorderStroke`**: `import androidx.compose.foundation.BorderStroke`
 - **`Brush` gradients**: `import androidx.compose.ui.graphics.Brush`
 - **Tool Usage**: Always use `replace_file_content` or `multi_replace_file_content` for surgical edits. NEVER use `run_shell_command` with `sed` or `awk` to modify files.
-- **Language**: Use Spanish for domain-specific labels in new screens (Pericia, Cerka, Chispa, Nexo) while keeping code/comments in English where appropriate.
+
+## New Screen Guidelines
+
+Follow these rules when adding a new showcase screen to the project.
+
+### 1 — Language-agnostic brand names
+
+Choose a name that works in any locale — a made-up brand word that doesn't rely on any specific language for its meaning. Avoid translating or adapting a concept into English, Spanish, or Portuguese and using that translation as the name.
+
+**Good:** Vortex, Sentry, Spark, Tastique, MediCare, Drape  
+**Avoid:** ~~Expert/Pericia~~, ~~Near/Cerka~~, ~~Nexus/Nexo~~ (these were legacy screens created before this rule)
+
+The brand name is used for: the package directory (`ui/brandname/`), the route constant in `AppNavigation.kt`, the Hub card title, and the screen's `TopAppBar` title.
+
+### 2 — Use string resources for all UI chrome
+
+All visible text in `@Composable` scope must use `stringResource(R.string.key)`. Provide translations for all three active locales: `values/strings.xml` (English), `values-es/strings.xml` (Spanish), `values-pt/strings.xml` (Portuguese).
+
+**In scope for extraction:** TopAppBar titles, section headers, button labels, filter chip labels, search placeholder text, status badges, empty-state messages, FAB labels.
+
+**Out of scope (leave hardcoded):** Fake data in `private val` lists outside composable scope (names, prices, messages, timestamps, product titles). Data class field values used purely as illustrative content.
+
+**Key constraint:** `stringResource()` can only be called from `@Composable` context. If a list of translatable labels is defined at file level as `private val`, move it inside the composable function body before replacing the literals.
+
+Naming convention for new keys: `screenname_descriptor` (e.g., `vortex_search_placeholder`, `sentry_years_old`). Common cross-screen keys share the `common_` prefix (e.g., `common_back`, `common_search`).
+
+### 3 — UI should be visually distinct from existing screens
+
+The new screen's layout, interaction patterns, and visual identity should bring something new to the showcase. Check the theme table above before committing to a design direction.
+
+**What to vary:** layout structure (card-heavy vs. list-heavy vs. map-centric), color temperature (warm/cool), theme brightness (dark/light), primary interaction (swipe stack, carousels, filter chips, progress tracking), information density.
+
+**What to avoid duplicating:** a second "list + detail" social feed, a second dark-rose color palette, a second horizontal-card carousel as the hero section.
+
+Each screen must define its own private `XxxTheme` composable (or reuse an existing one deliberately) and declare its accent in `ui/theme/Color.kt` as `val XxxAccent = Color(0xFF…)` for the Hub card.
 
 ---
 
