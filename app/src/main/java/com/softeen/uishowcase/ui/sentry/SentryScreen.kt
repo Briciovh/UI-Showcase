@@ -1,4 +1,4 @@
-package com.softeen.uishowcase.ui.vigia
+package com.softeen.uishowcase.ui.sentry
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
@@ -49,12 +49,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.softeen.uishowcase.R
 
 // ── Private palette ───────────────────────────────────────────────────────────
 private val VigiaFondo      = Color(0xFFF0F4FF)
@@ -161,7 +163,7 @@ private val alertas = listOf(
 // ── Screen ────────────────────────────────────────────────────────────────────
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun VigiaScreen(navController: NavController) {
+fun SentryScreen(navController: NavController) {
     VigiaTema {
         Scaffold(
             containerColor = VigiaFondo,
@@ -171,7 +173,7 @@ fun VigiaScreen(navController: NavController) {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
                                 Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Volver",
+                                contentDescription = stringResource(R.string.common_back),
                                 tint = Color.White
                             )
                         }
@@ -183,7 +185,7 @@ fun VigiaScreen(navController: NavController) {
                         ) {
                             Text("🛡️", fontSize = 20.sp)
                             Text(
-                                "Vigía",
+                                stringResource(R.string.sentry_title),
                                 style = MaterialTheme.typography.titleLarge.copy(
                                     fontWeight = FontWeight.ExtraBold
                                 ),
@@ -209,7 +211,7 @@ fun VigiaScreen(navController: NavController) {
                         Icon(Icons.Default.Warning, contentDescription = null)
                     },
                     text = {
-                        Text("Emergencia", fontWeight = FontWeight.Bold)
+                        Text(stringResource(R.string.sentry_emergency), fontWeight = FontWeight.Bold)
                     },
                     containerColor = VigiaEmergencia,
                     contentColor = Color.White
@@ -328,7 +330,7 @@ private fun MapaSeguridad() {
                         .background(Color(0xFF69FF47))
                 )
                 Text(
-                    "En vivo",
+                    stringResource(R.string.sentry_live),
                     style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                     color = Color.White
                 )
@@ -349,11 +351,11 @@ private fun SeccionHijos() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                "Mis hijos",
+                stringResource(R.string.sentry_my_children),
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                 color = VigiaOnBg
             )
-            Text("Gestionar", style = MaterialTheme.typography.labelMedium, color = VigiaPrimario)
+            Text(stringResource(R.string.sentry_manage), style = MaterialTheme.typography.labelMedium, color = VigiaPrimario)
         }
         LazyRow(
             contentPadding = PaddingValues(horizontal = 16.dp),
@@ -408,7 +410,7 @@ private fun TarjetaHijo(hijo: PerfilHijo) {
                     style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold),
                     color = VigiaOnBg
                 )
-                Text("${hijo.edad} años", style = MaterialTheme.typography.labelSmall, color = VigiaSubtext)
+                Text(stringResource(R.string.sentry_years_old, hijo.edad), style = MaterialTheme.typography.labelSmall, color = VigiaSubtext)
             }
             Text(
                 hijo.ultimaUbicacion,
@@ -448,9 +450,9 @@ private fun TarjetaHijo(hijo: PerfilHijo) {
 @Composable
 private fun BadgeEstadoZona(estado: EstadoZona) {
     val (text, color) = when (estado) {
-        EstadoZona.EN_ZONA_SEGURA -> "En zona"     to VigiaSeguro
-        EstadoZona.EN_TRANSITO    -> "En tránsito" to VigiaAmbar
-        EstadoZona.FUERA_DE_ZONA  -> "Fuera"       to VigiaEmergencia
+        EstadoZona.EN_ZONA_SEGURA -> stringResource(R.string.sentry_in_zone)    to VigiaSeguro
+        EstadoZona.EN_TRANSITO    -> stringResource(R.string.sentry_in_transit) to VigiaAmbar
+        EstadoZona.FUERA_DE_ZONA  -> stringResource(R.string.sentry_out_of_zone) to VigiaEmergencia
     }
     Box(
         modifier = Modifier
@@ -478,11 +480,11 @@ private fun SeccionZonasSeguras() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                "Zonas seguras",
+                stringResource(R.string.sentry_safe_zones),
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                 color = VigiaOnBg
             )
-            Text("+ Agregar", style = MaterialTheme.typography.labelMedium, color = VigiaPrimario)
+            Text(stringResource(R.string.sentry_add_zone), style = MaterialTheme.typography.labelMedium, color = VigiaPrimario)
         }
         Card(
             shape = RoundedCornerShape(16.dp),
@@ -535,7 +537,7 @@ private fun FilaZonaSegura(zona: ZonaSegura) {
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
-            Text("Radio: ${zona.radio}", style = MaterialTheme.typography.labelSmall, color = VigiaSubtext)
+            Text(stringResource(R.string.sentry_radius, zona.radio), style = MaterialTheme.typography.labelSmall, color = VigiaSubtext)
         }
         Box(
             modifier = Modifier
@@ -544,7 +546,7 @@ private fun FilaZonaSegura(zona: ZonaSegura) {
                 .padding(horizontal = 10.dp, vertical = 4.dp)
         ) {
             Text(
-                if (zona.activa) "Activa" else "Inactiva",
+                if (zona.activa) stringResource(R.string.sentry_zone_active) else stringResource(R.string.sentry_zone_inactive),
                 style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                 color = if (zona.activa) VigiaSeguro else VigiaSubtext
             )
@@ -564,11 +566,11 @@ private fun SeccionAlertas() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                "Alertas recientes",
+                stringResource(R.string.sentry_recent_alerts),
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                 color = VigiaOnBg
             )
-            Text("Ver todas", style = MaterialTheme.typography.labelMedium, color = VigiaPrimario)
+            Text(stringResource(R.string.sentry_view_all), style = MaterialTheme.typography.labelMedium, color = VigiaPrimario)
         }
         Card(
             shape = RoundedCornerShape(16.dp),
@@ -639,7 +641,7 @@ private fun FilaAlerta(alerta: AlertaReciente) {
 private fun SeccionEstadisticas() {
     Column(modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)) {
         Text(
-            "Estadísticas de hoy",
+            stringResource(R.string.sentry_stats_today),
             style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
             color = VigiaOnBg,
             modifier = Modifier.padding(bottom = 10.dp)
@@ -648,9 +650,9 @@ private fun SeccionEstadisticas() {
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            TarjetaEstadistica("🕐", "En zona",    "6h 20m", Modifier.weight(1f))
-            TarjetaEstadistica("📍", "Trayectos",  "3",       Modifier.weight(1f))
-            TarjetaEstadistica("🔋", "Batería med","71%",     Modifier.weight(1f))
+            TarjetaEstadistica("🕐", stringResource(R.string.sentry_in_zone),    "6h 20m", Modifier.weight(1f))
+            TarjetaEstadistica("📍", stringResource(R.string.sentry_stat_trips), "3",       Modifier.weight(1f))
+            TarjetaEstadistica("🔋", stringResource(R.string.sentry_stat_battery),"71%",    Modifier.weight(1f))
         }
     }
 }

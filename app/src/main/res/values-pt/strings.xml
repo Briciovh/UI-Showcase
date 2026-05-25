@@ -1,0 +1,172 @@
+<resources>
+    <string name="app_name">UI Showcase</string>
+    <string name="hub_title">UI Showcase</string>
+    <string name="hub_subtitle">Selecione uma demo</string>
+
+    <!-- Industry types -->
+    <string name="industry_food_delivery">Entrega de Comida</string>
+    <string name="industry_healthcare">Cuidados de Saúde</string>
+    <string name="industry_fashion_retail">Varejo de Moda</string>
+    <string name="industry_service_marketplace">Marketplace de Serviços</string>
+    <string name="industry_claims_tracking">Rastreamento de Sinistros</string>
+    <string name="industry_dating_app">App de Namoro</string>
+    <string name="industry_messaging">Mensagem Instantânea</string>
+    <string name="industry_child_safety">Segurança Infantil</string>
+    <string name="industry_neighborhood_access">Acesso de Vizinhança</string>
+
+    <!-- Portal Screen -->
+    <string name="portal_title">Portão</string>
+    <string name="portal_welcome">Bem-vindo,</string>
+    <string name="portal_apt">Apt. 4B · Edifício San Marco</string>
+    <string name="portal_status_closed">🔴 Fechado</string>
+    <string name="portal_status_opening">🟡 Abrindo…</string>
+    <string name="portal_status_open">🟢 Aberto</string>
+    <string name="portal_status_error">🔴 Erro</string>
+    <string name="portal_tap_to_open">Toque para abrir o portão</string>
+    <string name="portal_sending_command">Enviando comando para a API…</string>
+    <string name="portal_is_open">O portão está aberto</string>
+    <string name="portal_try_again">Tente novamente</string>
+    <string name="portal_open_door">Abrir\nPortão</string>
+    <string name="portal_opened">Aberto!</string>
+    <string name="portal_device_connection">Conexão do dispositivo</string>
+    <string name="portal_service_status">Status do serviço</string>
+    <string name="portal_connected">Conectado</string>
+    <string name="portal_access_history">Histórico de acesso</string>
+    <string name="portal_view_all">Ver tudo</string>
+    <string name="portal_today">Hoje</string>
+    <string name="portal_yesterday">Ontem</string>
+
+    <!-- Common / Shared -->
+    <string name="common_all">Todos</string>
+    <string name="common_back">Voltar</string>
+    <string name="common_view_all">Ver tudo</string>
+    <string name="common_search">Pesquisar</string>
+    <string name="common_notifications">Notificações</string>
+    <string name="common_cart">Carrinho</string>
+    <string name="common_profile">Perfil</string>
+
+    <!-- Screen / Brand titles -->
+    <string name="tastique_title">Tastique</string>
+    <string name="medicare_title">MediCare</string>
+    <string name="drape_title">drape</string>
+    <string name="nexus_title">Nexo</string>
+    <string name="expert_title">Perícia</string>
+    <string name="near_title">Cerka</string>
+    <string name="spark_title">Faísca</string>
+    <string name="vortex_title">Vórtex</string>
+    <string name="sentry_title">Sentinela</string>
+
+    <!-- Tastique Screen -->
+    <string name="tastique_chefs_special">Especial do Chef</string>
+    <string name="tastique_popular">Popular</string>
+
+    <!-- MediCare Screen -->
+    <string name="medicare_greeting">Bom dia,</string>
+    <string name="medicare_search_placeholder">Buscar médicos, especialistas...</string>
+    <string name="medicare_available_doctors">Médicos disponíveis</string>
+    <string name="medicare_select_date">Selecionar data</string>
+    <string name="medicare_select_time">Selecionar horário</string>
+    <string name="medicare_appointment_summary">Resumo da consulta</string>
+    <string name="medicare_doctor">Médico</string>
+    <string name="medicare_date">Data</string>
+    <string name="medicare_time">Horário</string>
+    <string name="medicare_confirm_booking">Confirmar agendamento</string>
+
+    <!-- Drape Screen -->
+    <string name="drape_search_placeholder">Buscar estilos, marcas...</string>
+
+    <!-- Nexus Screen -->
+    <string name="nexus_city">Cidade do México</string>
+    <string name="nexus_search_placeholder">Qual serviço você precisa?</string>
+    <string name="nexus_welcome">Bem-vindo!</string>
+    <string name="nexus_hero_subtitle">Serviços profissionais\nao seu alcance</string>
+    <string name="nexus_hero_caption">+500 prestadores na sua cidade</string>
+    <string name="nexus_explore">Explorar agora</string>
+    <string name="nexus_categories">Categorias</string>
+    <string name="nexus_featured_providers">Prestadores em destaque</string>
+    <string name="nexus_popular_services">Serviços populares</string>
+
+    <!-- Expert Screen -->
+    <string name="expert_dashboard">Painel de sinistros</string>
+    <string name="expert_search_placeholder">Buscar processo ou segurado…</string>
+    <string name="expert_stat_total">Total</string>
+    <string name="expert_stat_active">Ativos</string>
+    <string name="expert_stat_resolved">Resolvidos\neste mês</string>
+    <string name="expert_filter_all">Todos</string>
+    <string name="expert_filter_active">Ativos</string>
+    <string name="expert_filter_review">Em revisão</string>
+    <string name="expert_filter_pending">Pendentes</string>
+    <string name="expert_filter_closed">Encerrados</string>
+    <string name="expert_recent_cases">Processos recentes</string>
+    <string name="expert_case_progress">Progresso do processo</string>
+    <string name="expert_upcoming_appointments">Próximas consultas</string>
+    <string name="expert_view_schedule">Ver agenda</string>
+    <string name="expert_case_docs">Documentação do processo</string>
+    <string name="expert_doc_received">Recebido</string>
+    <string name="expert_doc_pending">Pendente</string>
+    <string name="expert_validity_eval">Avaliação de procedência</string>
+    <string name="expert_validity_index">Índice de validade</string>
+    <string name="expert_verdict">Prossegue com observações</string>
+    <string name="expert_observations_label">Observações do perito</string>
+
+    <!-- Near Screen -->
+    <string name="near_search_placeholder">Qual serviço você precisa?</string>
+    <string name="near_categories">Categorias</string>
+    <string name="near_nearby_providers">Prestadores próximos</string>
+    <string name="near_recent_orders">Meus pedidos recentes</string>
+    <string name="near_active_order">Pedido ativo</string>
+    <string name="near_status_on_way">A caminho</string>
+    <string name="near_view_map">Ver mapa completo</string>
+    <string name="near_service_progress">Progresso do serviço</string>
+    <string name="near_eta">ETA</string>
+    <string name="near_call">Ligar</string>
+    <string name="near_view_detail">Ver detalhes</string>
+    <string name="near_request">Solicitar</string>
+    <string name="near_view_history">Ver histórico</string>
+
+    <!-- Spark Screen -->
+    <string name="spark_new_matches">✨ Novas combinações</string>
+    <string name="spark_messages">💬 Mensagens</string>
+    <string name="spark_new_badge">NOVO</string>
+    <string name="spark_verified">Verificada</string>
+    <string name="spark_who_liked">🔒 Quem curtiu você?</string>
+    <string name="spark_likes_count">3 pessoas curtiram você</string>
+    <string name="spark_premium_subtitle">Ative Premium para ver quem curtiu você primeiro</string>
+    <string name="spark_premium_cta">✨ Ver quem curtiu você</string>
+
+    <!-- Sentry Screen -->
+    <string name="sentry_emergency">Emergência</string>
+    <string name="sentry_live">Ao vivo</string>
+    <string name="sentry_my_children">Meus filhos</string>
+    <string name="sentry_manage">Gerenciar</string>
+    <string name="sentry_years_old">%1$d anos</string>
+    <string name="sentry_safe_zones">Zonas seguras</string>
+    <string name="sentry_add_zone">+ Adicionar</string>
+    <string name="sentry_radius">Raio: %1$s</string>
+    <string name="sentry_zone_active">Ativa</string>
+    <string name="sentry_zone_inactive">Inativa</string>
+    <string name="sentry_in_zone">Na zona</string>
+    <string name="sentry_in_transit">Em trânsito</string>
+    <string name="sentry_out_of_zone">Fora</string>
+    <string name="sentry_recent_alerts">Alertas recentes</string>
+    <string name="sentry_view_all">Ver tudo</string>
+    <string name="sentry_stats_today">Estatísticas de hoje</string>
+    <string name="sentry_stat_trips">Trajetos</string>
+    <string name="sentry_stat_battery">Bat. média</string>
+
+    <!-- Vortex List Screen -->
+    <string name="vortex_search_placeholder">Buscar mensagem ou contato…</string>
+    <string name="vortex_tab_all">Todos</string>
+    <string name="vortex_tab_unread">Não lidos</string>
+    <string name="vortex_tab_groups">Grupos</string>
+    <string name="vortex_active_now">Ativos agora</string>
+    <string name="vortex_pinned">📌  Fixados</string>
+    <string name="vortex_recent">Recentes</string>
+    <string name="vortex_new_chat">Novo chat</string>
+
+    <!-- Vortex Chat Screen -->
+    <string name="vortex_online">Online</string>
+    <string name="vortex_message_placeholder">Mensagem…</string>
+    <string name="vortex_encrypted">🔒  As mensagens estão criptografadas de ponta a ponta</string>
+
+</resources>

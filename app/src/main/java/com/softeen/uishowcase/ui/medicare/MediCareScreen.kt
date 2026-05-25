@@ -52,7 +52,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import com.softeen.uishowcase.R
 
 // Private palette
 private val MediCareBg          = Color(0xFFF8FFFE)
@@ -75,8 +77,7 @@ private fun MediCareTheme(content: @Composable () -> Unit) {
     )
 }
 
-// Fake data
-private val specialties = listOf("All", "Cardiologist", "Neurologist", "Pediatrician", "Orthopedic", "Dermatologist")
+// Fake data — specialties list moved into MediCareScreen() so stringResource() is available
 
 private data class Doctor(
     val name: String,
@@ -107,6 +108,10 @@ private val timeSlots = listOf("9:00 AM", "10:30 AM", "12:00 PM", "2:00 PM", "4:
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MediCareScreen(navController: NavController) {
+    val specialties = listOf(
+        stringResource(R.string.common_all),
+        "Cardiologist", "Neurologist", "Pediatrician", "Orthopedic", "Dermatologist"
+    )
     var selectedSpecialty by remember { mutableStateOf(0) }
     var selectedDate by remember { mutableStateOf(2) }
     var selectedTime by remember { mutableStateOf(0) }
@@ -120,7 +125,7 @@ fun MediCareScreen(navController: NavController) {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Back",
+                                contentDescription = stringResource(R.string.common_back),
                                 tint = MediCareOnBg
                             )
                         }
@@ -128,7 +133,7 @@ fun MediCareScreen(navController: NavController) {
                     title = {
                         Column {
                             Text(
-                                "Good morning,",
+                                stringResource(R.string.medicare_greeting),
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MediCareSubtext
                             )
@@ -143,7 +148,7 @@ fun MediCareScreen(navController: NavController) {
                         IconButton(onClick = {}) {
                             Icon(
                                 imageVector = Icons.Default.Notifications,
-                                contentDescription = "Notifications",
+                                contentDescription = stringResource(R.string.common_notifications),
                                 tint = MediCareTealPrimary
                             )
                         }
@@ -161,7 +166,7 @@ fun MediCareScreen(navController: NavController) {
                         onValueChange = {},
                         readOnly = true,
                         placeholder = {
-                            Text("Search doctors, specialists...", color = MediCareSubtext)
+                            Text(stringResource(R.string.medicare_search_placeholder), color = MediCareSubtext)
                         },
                         leadingIcon = {
                             Icon(Icons.Default.Search, contentDescription = null, tint = MediCareSubtext)
@@ -201,7 +206,7 @@ fun MediCareScreen(navController: NavController) {
                 // Doctors section label
                 item {
                     Text(
-                        "Available Doctors",
+                        stringResource(R.string.medicare_available_doctors),
                         style = MaterialTheme.typography.titleMedium,
                         color = MediCareOnBg,
                         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
@@ -224,7 +229,7 @@ fun MediCareScreen(navController: NavController) {
                 // Date section label
                 item {
                     Text(
-                        "Select Date",
+                        stringResource(R.string.medicare_select_date),
                         style = MaterialTheme.typography.titleMedium,
                         color = MediCareOnBg,
                         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
@@ -252,7 +257,7 @@ fun MediCareScreen(navController: NavController) {
                 // Time section label
                 item {
                     Text(
-                        "Select Time",
+                        stringResource(R.string.medicare_select_time),
                         style = MaterialTheme.typography.titleMedium,
                         color = MediCareOnBg,
                         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
@@ -294,16 +299,16 @@ fun MediCareScreen(navController: NavController) {
                             verticalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
                             Text(
-                                "Appointment Summary",
+                                stringResource(R.string.medicare_appointment_summary),
                                 style = MaterialTheme.typography.titleMedium,
                                 color = Color.White
                             )
-                            SummaryRow("Doctor", "Dr. Sarah Chen")
+                            SummaryRow(stringResource(R.string.medicare_doctor), "Dr. Sarah Chen")
                             SummaryRow(
-                                "Date",
+                                stringResource(R.string.medicare_date),
                                 "${dateSlots[selectedDate].first}, ${dateSlots[selectedDate].second} Apr"
                             )
-                            SummaryRow("Time", timeSlots[selectedTime])
+                            SummaryRow(stringResource(R.string.medicare_time), timeSlots[selectedTime])
                             Spacer(Modifier.height(4.dp))
                             Button(
                                 onClick = {},
@@ -313,7 +318,7 @@ fun MediCareScreen(navController: NavController) {
                                     contentColor = MediCareTealPrimary
                                 )
                             ) {
-                                Text("Confirm Booking", style = MaterialTheme.typography.labelLarge)
+                                Text(stringResource(R.string.medicare_confirm_booking), style = MaterialTheme.typography.labelLarge)
                             }
                         }
                     }

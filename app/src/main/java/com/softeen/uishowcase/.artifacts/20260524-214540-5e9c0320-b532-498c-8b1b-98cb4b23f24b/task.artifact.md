@@ -1,0 +1,38 @@
+# Task: Internationalization and Refactoring of UI Showcase
+
+- [/] Research and Planning
+    - [x] Identify all screens and hardcoded strings
+    - [x] Identify screens needing rename (Portón, etc.)
+    - [x] Design language selector for Hub screen
+- [ ] Refactoring Screen Names
+    - [ ] Rename `Porton` to `Portal`
+    - [ ] Rename `Vigia` to `Sentry`
+    - [ ] Rename `Chispa` to `Spark`
+    - [ ] Rename `Cerka` to `Near`
+    - [ ] Rename `Pericia` to `Expert`
+    - [ ] Rename `Nexo` to `Nexus`
+    - [ ] Update `AppRoutes`, `AppNavigation`, and `HubScreen` references
+- [ ] Internationalization (i18n) Setup
+    - [ ] Create `strings.xml` (English - default)
+    - [ ] Create `values-es/strings.xml` (Spanish)
+    - [ ] Create `values-pt/strings.xml` (Portuguese)
+- [ ] String Extraction
+    - [ ] Hub Screen
+    - [ ] MediCare Screen
+    - [ ] Tastique Screen
+    - [ ] Drape Screen
+    - [ ] Nexus (Nexo) Screen
+    - [ ] Expert (Pericia) Screen
+    - [ ] Near (Cerka) Screen
+    - [ ] Spark (Chispa) Screen
+    - [ ] Vortex (List & Chat) Screens
+    - [ ] Sentry (Vigia) Screen
+    - [ ] Portal (Porton) Screen
+- [ ] Language Selector Implementation
+    - [ ] Implement language switching logic using `AppCompatDelegate`
+    - [ ] Add language selector UI to `HubScreen`
+- [ ] Verification
+    - [ ] Build and run the app
+    - [ ] Verify all strings are translated in EN, ES, PT
+    - [ ] Verify language switching works
+    - [ ] Verify refactored screen names are consistent

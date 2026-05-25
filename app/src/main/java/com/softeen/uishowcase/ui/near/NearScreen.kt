@@ -1,4 +1,4 @@
-package com.softeen.uishowcase.ui.cerka
+package com.softeen.uishowcase.ui.near
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
@@ -58,10 +58,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.softeen.uishowcase.R
 
 // Private palette
 private val CerkaFondo    = Color(0xFFF8F9FA)
@@ -158,7 +160,7 @@ private val categorias = listOf(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CerkaScreen(navController: NavController) {
+fun NearScreen(navController: NavController) {
     CerkaTema {
         Scaffold(
             containerColor = CerkaFondo,
@@ -168,7 +170,7 @@ fun CerkaScreen(navController: NavController) {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
                                 Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Volver",
+                                contentDescription = stringResource(R.string.common_back),
                                 tint = Color.White
                             )
                         }
@@ -176,7 +178,7 @@ fun CerkaScreen(navController: NavController) {
                     title = {
                         Column {
                             Text(
-                                "Cerka",
+                                stringResource(R.string.near_title),
                                 style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
                                 color = Color.White
                             )
@@ -189,7 +191,7 @@ fun CerkaScreen(navController: NavController) {
                     },
                     actions = {
                         IconButton(onClick = {}) {
-                            Icon(Icons.Default.Notifications, contentDescription = "Notificaciones", tint = Color.White)
+                            Icon(Icons.Default.Notifications, contentDescription = stringResource(R.string.common_notifications), tint = Color.White)
                         }
                         Box(
                             modifier = Modifier
@@ -314,7 +316,7 @@ private fun MapaSimulado() {
                 .padding(horizontal = 12.dp, vertical = 6.dp)
         ) {
             Text(
-                "Ver mapa completo",
+                stringResource(R.string.near_view_map),
                 style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.SemiBold),
                 color = CerkaPrimario
             )
@@ -342,7 +344,7 @@ private fun TarjetaPedidoActivo(pedido: PedidoActivo) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    "Pedido activo",
+                    stringResource(R.string.near_active_order),
                     style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold),
                     color = CerkaSubtexto
                 )
@@ -391,7 +393,7 @@ private fun TarjetaPedidoActivo(pedido: PedidoActivo) {
                         style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.ExtraBold),
                         color = CerkaPrimario
                     )
-                    Text("ETA", style = MaterialTheme.typography.labelSmall, color = CerkaSubtexto)
+                    Text(stringResource(R.string.near_eta), style = MaterialTheme.typography.labelSmall, color = CerkaSubtexto)
                 }
             }
 
@@ -400,7 +402,7 @@ private fun TarjetaPedidoActivo(pedido: PedidoActivo) {
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text("Progreso del servicio", style = MaterialTheme.typography.labelSmall, color = CerkaSubtexto)
+                    Text(stringResource(R.string.near_service_progress), style = MaterialTheme.typography.labelSmall, color = CerkaSubtexto)
                     Text(
                         "${(pedido.progreso * 100).toInt()}%",
                         style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
@@ -431,7 +433,7 @@ private fun TarjetaPedidoActivo(pedido: PedidoActivo) {
                 ) {
                     Icon(Icons.Default.Phone, contentDescription = null, modifier = Modifier.size(16.dp))
                     Spacer(Modifier.width(6.dp))
-                    Text("Llamar")
+                    Text(stringResource(R.string.near_call))
                 }
                 Button(
                     onClick = {},
@@ -439,7 +441,7 @@ private fun TarjetaPedidoActivo(pedido: PedidoActivo) {
                     shape = RoundedCornerShape(12.dp),
                     colors = ButtonDefaults.buttonColors(containerColor = CerkaPrimario)
                 ) {
-                    Text("Ver detalle")
+                    Text(stringResource(R.string.near_view_detail))
                 }
             }
         }
@@ -450,7 +452,7 @@ private fun TarjetaPedidoActivo(pedido: PedidoActivo) {
 private fun SeccionCategorias() {
     Column(modifier = Modifier.padding(top = 4.dp, bottom = 4.dp)) {
         Text(
-            "Categorías",
+            stringResource(R.string.near_categories),
             style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
             color = CerkaOnFondo,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
@@ -494,12 +496,12 @@ private fun SeccionProveedores() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                "Proveedores cercanos",
+                stringResource(R.string.near_nearby_providers),
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                 color = CerkaOnFondo
             )
             TextButton(onClick = {}) {
-                Text("Ver todos", style = MaterialTheme.typography.labelMedium, color = CerkaPrimario)
+                Text(stringResource(R.string.common_view_all), style = MaterialTheme.typography.labelMedium, color = CerkaPrimario)
             }
         }
         Spacer(Modifier.height(8.dp))
@@ -600,7 +602,7 @@ private fun TarjetaProveedor(prov: Proveedor) {
                 colors = ButtonDefaults.buttonColors(containerColor = CerkaPrimario),
                 contentPadding = PaddingValues(vertical = 6.dp)
             ) {
-                Text("Solicitar", style = MaterialTheme.typography.labelMedium)
+                Text(stringResource(R.string.near_request), style = MaterialTheme.typography.labelMedium)
             }
         }
     }
@@ -617,12 +619,12 @@ private fun SeccionPedidosRecientes() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                "Mis pedidos recientes",
+                stringResource(R.string.near_recent_orders),
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                 color = CerkaOnFondo
             )
             TextButton(onClick = {}) {
-                Text("Ver historial", style = MaterialTheme.typography.labelMedium, color = CerkaPrimario)
+                Text(stringResource(R.string.near_view_history), style = MaterialTheme.typography.labelMedium, color = CerkaPrimario)
             }
         }
         Spacer(Modifier.height(8.dp))

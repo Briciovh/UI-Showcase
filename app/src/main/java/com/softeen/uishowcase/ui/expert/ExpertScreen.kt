@@ -1,4 +1,4 @@
-package com.softeen.uishowcase.ui.pericia
+package com.softeen.uishowcase.ui.expert
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -61,9 +61,11 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.softeen.uishowcase.R
 
 // Private palette
 private val PericiaFondo      = Color(0xFFF4F7FB)
@@ -141,9 +143,15 @@ private val documentos = listOf(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PericiaScreen(navController: NavController) {
+fun ExpertScreen(navController: NavController) {
     var filtroSeleccionado by remember { mutableStateOf(0) }
-    val filtros = listOf("Todos", "Activos", "En revisión", "Pendientes", "Cerrados")
+    val filtros = listOf(
+        stringResource(R.string.expert_filter_all),
+        stringResource(R.string.expert_filter_active),
+        stringResource(R.string.expert_filter_review),
+        stringResource(R.string.expert_filter_pending),
+        stringResource(R.string.expert_filter_closed),
+    )
 
     PericiaTema {
         Scaffold(
@@ -154,21 +162,21 @@ fun PericiaScreen(navController: NavController) {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
                                 Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Volver",
+                                contentDescription = stringResource(R.string.common_back),
                                 tint = Color.White
                             )
                         }
                     },
                     title = {
                         Text(
-                            "Pericia",
+                            stringResource(R.string.expert_title),
                             style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
                             color = Color.White
                         )
                     },
                     actions = {
                         IconButton(onClick = {}) {
-                            Icon(Icons.Default.Notifications, contentDescription = "Notificaciones", tint = Color.White)
+                            Icon(Icons.Default.Notifications, contentDescription = stringResource(R.string.common_notifications), tint = Color.White)
                         }
                         Box(
                             modifier = Modifier
@@ -218,7 +226,7 @@ private fun BannerEstadisticas() {
                 color = Color.White.copy(alpha = 0.80f)
             )
             Text(
-                "Panel de siniestros",
+                stringResource(R.string.expert_dashboard),
                 style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
                 color = Color.White
             )
@@ -227,9 +235,9 @@ private fun BannerEstadisticas() {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
             ) {
-                ChipStat("12", "Total",              Modifier.weight(1f))
-                ChipStat("4",  "Activos",            Modifier.weight(1f))
-                ChipStat("3",  "Resueltos\neste mes",Modifier.weight(1f))
+                ChipStat("12", stringResource(R.string.expert_stat_total),   Modifier.weight(1f))
+                ChipStat("4",  stringResource(R.string.expert_stat_active),  Modifier.weight(1f))
+                ChipStat("3",  stringResource(R.string.expert_stat_resolved),Modifier.weight(1f))
             }
         }
     }
@@ -265,7 +273,7 @@ private fun BarraBusqueda() {
         value = "",
         onValueChange = {},
         readOnly = true,
-        placeholder = { Text("Buscar expediente o asegurado…", color = PericiaSubtexto) },
+        placeholder = { Text(stringResource(R.string.expert_search_placeholder), color = PericiaSubtexto) },
         leadingIcon = { Icon(Icons.Default.Search, contentDescription = null, tint = PericiaSubtexto) },
         shape = RoundedCornerShape(28.dp),
         modifier = Modifier
@@ -311,12 +319,12 @@ private fun SeccionExpedientes() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                "Expedientes recientes",
+                stringResource(R.string.expert_recent_cases),
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                 color = PericiaOnFondo
             )
             TextButton(onClick = {}) {
-                Text("Ver todos", style = MaterialTheme.typography.labelMedium, color = PericiaAzul)
+                Text(stringResource(R.string.common_view_all), style = MaterialTheme.typography.labelMedium, color = PericiaAzul)
             }
         }
         Spacer(Modifier.height(8.dp))
@@ -396,7 +404,7 @@ private fun TarjetaExpediente(exp: Expediente) {
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            "Progreso del expediente",
+                            stringResource(R.string.expert_case_progress),
                             style = MaterialTheme.typography.labelSmall,
                             color = PericiaSubtexto
                         )
@@ -449,12 +457,12 @@ private fun SeccionCitas() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                "Próximas citas",
+                stringResource(R.string.expert_upcoming_appointments),
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                 color = PericiaOnFondo
             )
             TextButton(onClick = {}) {
-                Text("Ver agenda", style = MaterialTheme.typography.labelMedium, color = PericiaAzul)
+                Text(stringResource(R.string.expert_view_schedule), style = MaterialTheme.typography.labelMedium, color = PericiaAzul)
             }
         }
         Spacer(Modifier.height(8.dp))
@@ -536,7 +544,7 @@ private fun SeccionDocumentos() {
     Column(modifier = Modifier.padding(top = 20.dp)) {
         Column(modifier = Modifier.padding(horizontal = 16.dp)) {
             Text(
-                "Documentación del expediente",
+                stringResource(R.string.expert_case_docs),
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                 color = PericiaOnFondo
             )
@@ -592,7 +600,7 @@ private fun FilaDocumento(doc: Documento) {
             modifier = Modifier.weight(1f)
         )
         Text(
-            if (doc.recibido) "Recibido" else "Pendiente",
+            if (doc.recibido) stringResource(R.string.expert_doc_received) else stringResource(R.string.expert_doc_pending),
             style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.SemiBold),
             color = if (doc.recibido) PericiaVerde else PericiaAnaranjado
         )
@@ -603,7 +611,7 @@ private fun FilaDocumento(doc: Documento) {
 private fun SeccionEvaluacion() {
     Column(modifier = Modifier.padding(top = 20.dp)) {
         Text(
-            "Evaluación de procedencia",
+            stringResource(R.string.expert_validity_eval),
             style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
             color = PericiaOnFondo,
             modifier = Modifier.padding(horizontal = 16.dp)
@@ -638,7 +646,7 @@ private fun SeccionEvaluacion() {
                             .padding(horizontal = 12.dp, vertical = 6.dp)
                     ) {
                         Text(
-                            "Procede con observaciones",
+                            stringResource(R.string.expert_verdict),
                             style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                             color = PericiaAnaranjado
                         )
@@ -649,7 +657,7 @@ private fun SeccionEvaluacion() {
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
-                        Text("Índice de validez", style = MaterialTheme.typography.bodySmall, color = PericiaSubtexto)
+                        Text(stringResource(R.string.expert_validity_index), style = MaterialTheme.typography.bodySmall, color = PericiaSubtexto)
                         Text(
                             "78%",
                             style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.ExtraBold),
@@ -669,7 +677,7 @@ private fun SeccionEvaluacion() {
                 }
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                     Text(
-                        "Observaciones del perito",
+                        stringResource(R.string.expert_observations_label),
                         style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold),
                         color = PericiaOnFondo
                     )

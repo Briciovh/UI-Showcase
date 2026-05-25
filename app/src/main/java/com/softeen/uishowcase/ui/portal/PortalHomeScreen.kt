@@ -1,4 +1,4 @@
-package com.softeen.uishowcase.ui.porton
+package com.softeen.uishowcase.ui.portal
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -45,12 +44,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.softeen.uishowcase.R
 import kotlinx.coroutines.delay
 
 // ── Private palette ───────────────────────────────────────────────────────────
@@ -92,17 +93,18 @@ private data class RegistroAcceso(
     val colorAvatar: Color
 )
 
-private val historial = listOf(
-    RegistroAcceso("Carlos Martínez", "4B", "08:42", "Hoy",  PortonPrimario),
-    RegistroAcceso("Laura Sánchez",   "2A", "07:55", "Hoy",  Color(0xFF8E44AD)),
-    RegistroAcceso("Pedro Gómez",     "1C", "23:10", "Ayer", Color(0xFF2C3E50)),
-    RegistroAcceso("Ana Torres",      "3D", "19:30", "Ayer", Color(0xFF16A085)),
+@Composable
+private fun getHistorial() = listOf(
+    RegistroAcceso("Carlos Martínez", "4B", "08:42", stringResource(R.string.portal_today),  PortonPrimario),
+    RegistroAcceso("Laura Sánchez",   "2A", "07:55", stringResource(R.string.portal_today),  Color(0xFF8E44AD)),
+    RegistroAcceso("Pedro Gómez",     "1C", "23:10", stringResource(R.string.portal_yesterday), Color(0xFF2C3E50)),
+    RegistroAcceso("Ana Torres",      "3D", "19:30", stringResource(R.string.portal_yesterday), Color(0xFF16A085)),
 )
 
 // ── Screen ────────────────────────────────────────────────────────────────────
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PortonHomeScreen(navController: NavController) {
+fun PortalHomeScreen(navController: NavController) {
     var estado by remember { mutableStateOf(EstadoPuerta.CERRADA) }
 
     // State machine: ABRIENDO → ABIERTA → CERRADA
@@ -136,7 +138,7 @@ fun PortonHomeScreen(navController: NavController) {
                         ) {
                             Text("🏢", fontSize = 18.sp)
                             Text(
-                                "Portón",
+                                stringResource(R.string.portal_title),
                                 style = MaterialTheme.typography.titleLarge.copy(
                                     fontWeight = FontWeight.ExtraBold
                                 ),
@@ -197,10 +199,10 @@ fun PortonHomeScreen(navController: NavController) {
 @Composable
 private fun TarjetaBienvenida(estado: EstadoPuerta, modifier: Modifier = Modifier) {
     val (pillColor, pillLabel) = when (estado) {
-        EstadoPuerta.CERRADA   -> PortonRojo    to "🔴 Cerrada"
-        EstadoPuerta.ABRIENDO  -> PortonAccento to "🟡 Abriendo…"
-        EstadoPuerta.ABIERTA   -> PortonVerde   to "🟢 Abierta"
-        EstadoPuerta.ERROR     -> PortonRojo    to "🔴 Error"
+        EstadoPuerta.CERRADA   -> PortonRojo    to stringResource(R.string.portal_status_closed)
+        EstadoPuerta.ABRIENDO  -> PortonAccento to stringResource(R.string.portal_status_opening)
+        EstadoPuerta.ABIERTA   -> PortonVerde   to stringResource(R.string.portal_status_open)
+        EstadoPuerta.ERROR     -> PortonRojo    to stringResource(R.string.portal_status_error)
     }
 
     Card(
@@ -218,7 +220,7 @@ private fun TarjetaBienvenida(estado: EstadoPuerta, modifier: Modifier = Modifie
         ) {
             Column(verticalArrangement = Arrangement.spacedBy(3.dp)) {
                 Text(
-                    "Bienvenido,",
+                    stringResource(R.string.portal_welcome),
                     style = MaterialTheme.typography.bodySmall,
                     color = PortonSubtext
                 )
@@ -228,7 +230,7 @@ private fun TarjetaBienvenida(estado: EstadoPuerta, modifier: Modifier = Modifie
                     color = PortonPrimario
                 )
                 Text(
-                    "Apt. 4B · Edificio San Marco",
+                    stringResource(R.string.portal_apt),
                     style = MaterialTheme.typography.labelSmall,
                     color = PortonSubtext
                 )
@@ -259,10 +261,10 @@ private fun SeccionBotonPuerta(estado: EstadoPuerta, onTap: () -> Unit) {
         EstadoPuerta.ERROR     -> PortonRojo
     }
     val sublabel = when (estado) {
-        EstadoPuerta.CERRADA   -> "Toca para abrir el portal"
-        EstadoPuerta.ABRIENDO  -> "Enviando comando a la API…"
-        EstadoPuerta.ABIERTA   -> "El portal está abierto"
-        EstadoPuerta.ERROR     -> "Vuelve a intentarlo"
+        EstadoPuerta.CERRADA   -> stringResource(R.string.portal_tap_to_open)
+        EstadoPuerta.ABRIENDO  -> stringResource(R.string.portal_sending_command)
+        EstadoPuerta.ABIERTA   -> stringResource(R.string.portal_is_open)
+        EstadoPuerta.ERROR     -> stringResource(R.string.portal_try_again)
     }
 
     Box(
@@ -323,7 +325,7 @@ private fun SeccionBotonPuerta(estado: EstadoPuerta, onTap: () -> Unit) {
                                         modifier = Modifier.size(42.dp)
                                     )
                                     Text(
-                                        "Abrir\nPuerta",
+                                        stringResource(R.string.portal_open_door),
                                         style = MaterialTheme.typography.labelLarge.copy(
                                             fontWeight = FontWeight.ExtraBold,
                                             fontSize = 15.sp
@@ -352,7 +354,7 @@ private fun SeccionBotonPuerta(estado: EstadoPuerta, onTap: () -> Unit) {
                                         modifier = Modifier.size(42.dp)
                                     )
                                     Text(
-                                        "¡Abierta!",
+                                        stringResource(R.string.portal_opened),
                                         style = MaterialTheme.typography.labelLarge.copy(
                                             fontWeight = FontWeight.ExtraBold,
                                             fontSize = 15.sp
@@ -374,7 +376,7 @@ private fun SeccionBotonPuerta(estado: EstadoPuerta, onTap: () -> Unit) {
                                         modifier = Modifier.size(42.dp)
                                     )
                                     Text(
-                                        "Error",
+                                        stringResource(R.string.portal_status_error).replace("🔴 ", ""),
                                         style = MaterialTheme.typography.labelLarge.copy(
                                             fontWeight = FontWeight.ExtraBold
                                         ),
@@ -407,7 +409,7 @@ private fun TarjetaEstadoAPI(modifier: Modifier = Modifier) {
     ) {
         Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
             Text(
-                "Conexión con el dispositivo",
+                stringResource(R.string.portal_device_connection),
                 style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold),
                 color = PortonSubtext
             )
@@ -442,7 +444,7 @@ private fun TarjetaEstadoAPI(modifier: Modifier = Modifier) {
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    "Estado del servicio",
+                    stringResource(R.string.portal_service_status),
                     style = MaterialTheme.typography.labelSmall,
                     color = PortonSubtext
                 )
@@ -453,7 +455,7 @@ private fun TarjetaEstadoAPI(modifier: Modifier = Modifier) {
                         .padding(horizontal = 10.dp, vertical = 3.dp)
                 ) {
                     Text(
-                        "Conectado",
+                        stringResource(R.string.portal_connected),
                         style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                         color = PortonVerde
                     )
@@ -475,12 +477,12 @@ private fun SeccionHistorial(modifier: Modifier = Modifier) {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                "Historial de accesos",
+                stringResource(R.string.portal_access_history),
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                 color = PortonOnBg
             )
             Text(
-                "Ver todo",
+                stringResource(R.string.portal_view_all),
                 style = MaterialTheme.typography.labelMedium,
                 color = PortonPrimario
             )
@@ -491,9 +493,9 @@ private fun SeccionHistorial(modifier: Modifier = Modifier) {
             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
         ) {
             Column(modifier = Modifier.padding(4.dp)) {
-                historial.forEachIndexed { i, acceso ->
+                getHistorial().forEachIndexed { i, acceso ->
                     FilaRegistroAcceso(acceso)
-                    if (i < historial.size - 1) {
+                    if (i < getHistorial().size - 1) {
                         HorizontalDivider(
                             modifier = Modifier.padding(horizontal = 16.dp),
                             color = PortonStroke

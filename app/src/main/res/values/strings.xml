@@ -1,3 +1,172 @@
 <resources>
     <string name="app_name">UI Showcase</string>
+    <string name="hub_title">UI Showcase</string>
+    <string name="hub_subtitle">Select a demo</string>
+
+    <!-- Industry types -->
+    <string name="industry_food_delivery">Food Delivery</string>
+    <string name="industry_healthcare">Healthcare</string>
+    <string name="industry_fashion_retail">Fashion Retail</string>
+    <string name="industry_service_marketplace">Service Marketplace</string>
+    <string name="industry_claims_tracking">Claims Tracking</string>
+    <string name="industry_dating_app">Dating App</string>
+    <string name="industry_messaging">Instant Messaging</string>
+    <string name="industry_child_safety">Child Safety</string>
+    <string name="industry_neighborhood_access">Neighborhood Access</string>
+
+    <!-- Portal Screen -->
+    <string name="portal_title">Portal</string>
+    <string name="portal_welcome">Welcome,</string>
+    <string name="portal_apt">Apt. 4B · San Marco Building</string>
+    <string name="portal_status_closed">🔴 Closed</string>
+    <string name="portal_status_opening">🟡 Opening…</string>
+    <string name="portal_status_open">🟢 Open</string>
+    <string name="portal_status_error">🔴 Error</string>
+    <string name="portal_tap_to_open">Tap to open the portal</string>
+    <string name="portal_sending_command">Sending command to API…</string>
+    <string name="portal_is_open">The portal is open</string>
+    <string name="portal_try_again">Try again</string>
+    <string name="portal_open_door">Open\nDoor</string>
+    <string name="portal_opened">Opened!</string>
+    <string name="portal_device_connection">Device connection</string>
+    <string name="portal_service_status">Service status</string>
+    <string name="portal_connected">Connected</string>
+    <string name="portal_access_history">Access history</string>
+    <string name="portal_view_all">View all</string>
+    <string name="portal_today">Today</string>
+    <string name="portal_yesterday">Yesterday</string>
+
+    <!-- Common / Shared -->
+    <string name="common_all">All</string>
+    <string name="common_back">Back</string>
+    <string name="common_view_all">View all</string>
+    <string name="common_search">Search</string>
+    <string name="common_notifications">Notifications</string>
+    <string name="common_cart">Cart</string>
+    <string name="common_profile">Profile</string>
+
+    <!-- Screen / Brand titles -->
+    <string name="tastique_title">Tastique</string>
+    <string name="medicare_title">MediCare</string>
+    <string name="drape_title">drape</string>
+    <string name="nexus_title">Nexus</string>
+    <string name="expert_title">Expert</string>
+    <string name="near_title">Near</string>
+    <string name="spark_title">Spark</string>
+    <string name="vortex_title">Vortex</string>
+    <string name="sentry_title">Sentry</string>
+
+    <!-- Tastique Screen -->
+    <string name="tastique_chefs_special">Chef\'s Special</string>
+    <string name="tastique_popular">Popular</string>
+
+    <!-- MediCare Screen -->
+    <string name="medicare_greeting">Good morning,</string>
+    <string name="medicare_search_placeholder">Search doctors, specialists...</string>
+    <string name="medicare_available_doctors">Available Doctors</string>
+    <string name="medicare_select_date">Select Date</string>
+    <string name="medicare_select_time">Select Time</string>
+    <string name="medicare_appointment_summary">Appointment Summary</string>
+    <string name="medicare_doctor">Doctor</string>
+    <string name="medicare_date">Date</string>
+    <string name="medicare_time">Time</string>
+    <string name="medicare_confirm_booking">Confirm Booking</string>
+
+    <!-- Drape Screen -->
+    <string name="drape_search_placeholder">Search styles, brands...</string>
+
+    <!-- Nexus Screen -->
+    <string name="nexus_city">Mexico City</string>
+    <string name="nexus_search_placeholder">What service do you need?</string>
+    <string name="nexus_welcome">Welcome!</string>
+    <string name="nexus_hero_subtitle">Professional services\nat your reach</string>
+    <string name="nexus_hero_caption">+500 providers in your city</string>
+    <string name="nexus_explore">Explore now</string>
+    <string name="nexus_categories">Categories</string>
+    <string name="nexus_featured_providers">Featured Providers</string>
+    <string name="nexus_popular_services">Popular Services</string>
+
+    <!-- Expert Screen -->
+    <string name="expert_dashboard">Claims Dashboard</string>
+    <string name="expert_search_placeholder">Search case or insured...</string>
+    <string name="expert_stat_total">Total</string>
+    <string name="expert_stat_active">Active</string>
+    <string name="expert_stat_resolved">Resolved\nthis month</string>
+    <string name="expert_filter_all">All</string>
+    <string name="expert_filter_active">Active</string>
+    <string name="expert_filter_review">In Review</string>
+    <string name="expert_filter_pending">Pending</string>
+    <string name="expert_filter_closed">Closed</string>
+    <string name="expert_recent_cases">Recent Cases</string>
+    <string name="expert_case_progress">Case progress</string>
+    <string name="expert_upcoming_appointments">Upcoming Appointments</string>
+    <string name="expert_view_schedule">View schedule</string>
+    <string name="expert_case_docs">Case Documentation</string>
+    <string name="expert_doc_received">Received</string>
+    <string name="expert_doc_pending">Pending</string>
+    <string name="expert_validity_eval">Validity Assessment</string>
+    <string name="expert_validity_index">Validity Index</string>
+    <string name="expert_verdict">Proceeds with observations</string>
+    <string name="expert_observations_label">Expert observations</string>
+
+    <!-- Near Screen -->
+    <string name="near_search_placeholder">What service do you need?</string>
+    <string name="near_categories">Categories</string>
+    <string name="near_nearby_providers">Nearby Providers</string>
+    <string name="near_recent_orders">Recent Orders</string>
+    <string name="near_active_order">Active Order</string>
+    <string name="near_status_on_way">On the way</string>
+    <string name="near_view_map">View full map</string>
+    <string name="near_service_progress">Service progress</string>
+    <string name="near_eta">ETA</string>
+    <string name="near_call">Call</string>
+    <string name="near_view_detail">View details</string>
+    <string name="near_request">Request</string>
+    <string name="near_view_history">View history</string>
+
+    <!-- Spark Screen -->
+    <string name="spark_new_matches">✨ New Matches</string>
+    <string name="spark_messages">💬 Messages</string>
+    <string name="spark_new_badge">NEW</string>
+    <string name="spark_verified">Verified</string>
+    <string name="spark_who_liked">🔒 Who liked you?</string>
+    <string name="spark_likes_count">3 people liked you</string>
+    <string name="spark_premium_subtitle">Activate Premium to see who liked you first</string>
+    <string name="spark_premium_cta">✨ See who liked you</string>
+
+    <!-- Sentry Screen -->
+    <string name="sentry_emergency">Emergency</string>
+    <string name="sentry_live">Live</string>
+    <string name="sentry_my_children">My Children</string>
+    <string name="sentry_manage">Manage</string>
+    <string name="sentry_years_old">%1$d yrs</string>
+    <string name="sentry_safe_zones">Safe Zones</string>
+    <string name="sentry_add_zone">+ Add</string>
+    <string name="sentry_radius">Radius: %1$s</string>
+    <string name="sentry_zone_active">Active</string>
+    <string name="sentry_zone_inactive">Inactive</string>
+    <string name="sentry_in_zone">In zone</string>
+    <string name="sentry_in_transit">In transit</string>
+    <string name="sentry_out_of_zone">Out</string>
+    <string name="sentry_recent_alerts">Recent Alerts</string>
+    <string name="sentry_view_all">View all</string>
+    <string name="sentry_stats_today">Today\'s Statistics</string>
+    <string name="sentry_stat_trips">Trips</string>
+    <string name="sentry_stat_battery">Avg battery</string>
+
+    <!-- Vortex List Screen -->
+    <string name="vortex_search_placeholder">Search messages or contacts…</string>
+    <string name="vortex_tab_all">All</string>
+    <string name="vortex_tab_unread">Unread</string>
+    <string name="vortex_tab_groups">Groups</string>
+    <string name="vortex_active_now">Active now</string>
+    <string name="vortex_pinned">📌  Pinned</string>
+    <string name="vortex_recent">Recent</string>
+    <string name="vortex_new_chat">New chat</string>
+
+    <!-- Vortex Chat Screen -->
+    <string name="vortex_online">Online</string>
+    <string name="vortex_message_placeholder">Message…</string>
+    <string name="vortex_encrypted">🔒  Messages are end-to-end encrypted</string>
+
 </resources>

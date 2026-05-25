@@ -1,4 +1,4 @@
-package com.softeen.uishowcase.ui.chispa
+package com.softeen.uishowcase.ui.spark
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -51,6 +51,7 @@ import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -58,6 +59,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.softeen.uishowcase.R
 
 // ── Private palette ──────────────────────────────────────────────────────────
 
@@ -197,7 +199,7 @@ private val conversaciones = listOf(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ChispaScreen(navController: NavController) {
+fun SparkScreen(navController: NavController) {
     ChispaTema {
         Scaffold(
             containerColor = ChispaFondo,
@@ -207,7 +209,7 @@ fun ChispaScreen(navController: NavController) {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
                                 Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Volver",
+                                contentDescription = stringResource(R.string.common_back),
                                 tint = Color.White
                             )
                         }
@@ -219,7 +221,7 @@ fun ChispaScreen(navController: NavController) {
                         ) {
                             Text("🔥", fontSize = 20.sp)
                             Text(
-                                "Chispa",
+                                stringResource(R.string.spark_title),
                                 style = MaterialTheme.typography.titleLarge.copy(
                                     fontWeight = FontWeight.ExtraBold
                                 ),
@@ -361,7 +363,7 @@ private fun TarjetaPerfil(perfil: PerfilCitas, modifier: Modifier = Modifier) {
                         modifier = Modifier.size(12.dp)
                     )
                     Text(
-                        "Verificada",
+                        stringResource(R.string.spark_verified),
                         style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
                         color = Color.White
                     )
@@ -466,12 +468,12 @@ private fun SeccionMatches() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                "✨ Nuevos matches",
+                stringResource(R.string.spark_new_matches),
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                 color = Color.White
             )
             Text(
-                "Ver todos",
+                stringResource(R.string.common_view_all),
                 style = MaterialTheme.typography.labelMedium,
                 color = ChispaPrimario
             )
@@ -526,7 +528,7 @@ private fun BurbujaMatch(match: MatchCitas) {
                         .padding(horizontal = 5.dp, vertical = 2.dp)
                 ) {
                     Text(
-                        "NEW",
+                        stringResource(R.string.spark_new_badge),
                         style = MaterialTheme.typography.labelSmall.copy(
                             fontWeight = FontWeight.ExtraBold,
                             fontSize = 9.sp
@@ -557,12 +559,12 @@ private fun SeccionMensajes() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                "💬 Mensajes",
+                stringResource(R.string.spark_messages),
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                 color = Color.White
             )
             Text(
-                "Ver todos",
+                stringResource(R.string.common_view_all),
                 style = MaterialTheme.typography.labelMedium,
                 color = ChispaPrimario
             )
@@ -669,7 +671,7 @@ private fun FilaMensaje(conv: ConversacionCitas) {
 private fun SeccionPremium() {
     Column(modifier = Modifier.padding(top = 24.dp)) {
         Text(
-            "🔒 ¿Quién te gustó?",
+            stringResource(R.string.spark_who_liked),
             style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
             color = Color.White,
             modifier = Modifier.padding(horizontal = 16.dp)
@@ -737,12 +739,12 @@ private fun SeccionPremium() {
                         verticalArrangement = Arrangement.spacedBy(4.dp)
                     ) {
                         Text(
-                            "3 personas te dieron Like",
+                            stringResource(R.string.spark_likes_count),
                             style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
                             color = Color.White
                         )
                         Text(
-                            "Activa Premium para ver quién te gustó primero",
+                            stringResource(R.string.spark_premium_subtitle),
                             style = MaterialTheme.typography.bodySmall,
                             color = ChispaSubtexto,
                             textAlign = TextAlign.Center
@@ -756,7 +758,7 @@ private fun SeccionPremium() {
                         colors = ButtonDefaults.buttonColors(containerColor = ChispaPrimario)
                     ) {
                         Text(
-                            "✨ Ver quién te gustó",
+                            stringResource(R.string.spark_premium_cta),
                             style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.Bold),
                             modifier = Modifier.padding(vertical = 4.dp)
                         )
