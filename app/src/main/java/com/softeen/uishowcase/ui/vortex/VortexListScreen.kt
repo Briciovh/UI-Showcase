@@ -49,11 +49,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.softeen.uishowcase.R
 import com.softeen.uishowcase.navigation.AppRoutes
 
 // ── Private palette ───────────────────────────────────────────────────────────
@@ -158,7 +160,11 @@ private val chats = listOf(
 @Composable
 fun VortexListScreen(navController: NavController) {
     var tabIndex by remember { mutableStateOf(0) }
-    val tabs = listOf("Todos", "No leídos", "Grupos")
+    val tabs = listOf(
+        stringResource(R.string.vortex_tab_all),
+        stringResource(R.string.vortex_tab_unread),
+        stringResource(R.string.vortex_tab_groups),
+    )
 
     VortexTema {
         Scaffold(
@@ -169,7 +175,7 @@ fun VortexListScreen(navController: NavController) {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
                                 Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Volver",
+                                contentDescription = stringResource(R.string.common_back),
                                 tint = VxPrimario
                             )
                         }
@@ -196,7 +202,7 @@ fun VortexListScreen(navController: NavController) {
                                 )
                             }
                             Text(
-                                "Vórtex",
+                                stringResource(R.string.vortex_title),
                                 style = MaterialTheme.typography.titleLarge.copy(
                                     fontWeight = FontWeight.ExtraBold
                                 ),
@@ -222,7 +228,7 @@ fun VortexListScreen(navController: NavController) {
                     contentColor = VxFondo,
                     shape = CircleShape
                 ) {
-                    Icon(Icons.Default.Edit, contentDescription = "Nuevo chat")
+                    Icon(Icons.Default.Edit, contentDescription = stringResource(R.string.vortex_new_chat))
                 }
             }
         ) { innerPadding ->
@@ -261,12 +267,12 @@ fun VortexListScreen(navController: NavController) {
                 val unpinned = chats.filter { !it.fijado }
 
                 if (pinned.isNotEmpty()) {
-                    item { SectionLabel("📌  Fijados") }
+                    item { SectionLabel(stringResource(R.string.vortex_pinned)) }
                     items(pinned) { chat ->
                         FilaChat(chat) { navController.navigate(AppRoutes.VORTEX_CHAT) }
                     }
                 }
-                item { SectionLabel("Recientes") }
+                item { SectionLabel(stringResource(R.string.vortex_recent)) }
                 items(unpinned) { chat ->
                     FilaChat(chat) { navController.navigate(AppRoutes.VORTEX_CHAT) }
                 }
@@ -290,7 +296,7 @@ private fun BuscadorVortex() {
         horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         Icon(Icons.Default.Search, contentDescription = null, tint = VxSubtext, modifier = Modifier.size(18.dp))
-        Text("Buscar mensaje o contacto…", style = MaterialTheme.typography.bodyMedium, color = VxSubtext)
+        Text(stringResource(R.string.vortex_search_placeholder), style = MaterialTheme.typography.bodyMedium, color = VxSubtext)
     }
 }
 
@@ -298,7 +304,7 @@ private fun BuscadorVortex() {
 private fun SeccionActivos() {
     Column(modifier = Modifier.padding(bottom = 4.dp)) {
         Text(
-            "  Activos ahora",
+            stringResource(R.string.vortex_active_now),
             style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.SemiBold),
             color = VxSubtext,
             modifier = Modifier.padding(start = 16.dp, bottom = 8.dp)

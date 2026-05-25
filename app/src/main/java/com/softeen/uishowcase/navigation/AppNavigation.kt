@@ -8,28 +8,28 @@ import com.softeen.uishowcase.ui.hub.HubScreen
 import com.softeen.uishowcase.ui.drape.DrapeScreen
 import com.softeen.uishowcase.ui.medicare.MediCareScreen
 import com.softeen.uishowcase.ui.tastique.TastiqueScreen
-import com.softeen.uishowcase.ui.nexo.NexoScreen
-import com.softeen.uishowcase.ui.pericia.PericiaScreen
-import com.softeen.uishowcase.ui.cerka.CerkaScreen
-import com.softeen.uishowcase.ui.chispa.ChispaScreen
+import com.softeen.uishowcase.ui.nexus.NexusScreen
+import com.softeen.uishowcase.ui.expert.ExpertScreen
+import com.softeen.uishowcase.ui.near.NearScreen
+import com.softeen.uishowcase.ui.spark.SparkScreen
 import com.softeen.uishowcase.ui.vortex.VortexListScreen
 import com.softeen.uishowcase.ui.vortex.VortexChatScreen
-import com.softeen.uishowcase.ui.vigia.VigiaScreen
-import com.softeen.uishowcase.ui.porton.PortonHomeScreen
+import com.softeen.uishowcase.ui.sentry.SentryScreen
+import com.softeen.uishowcase.ui.portal.PortalHomeScreen
 
 object AppRoutes {
     const val HUB = "hub"
     const val TASTIQUE = "tastique"
     const val MEDICARE = "medicare"
     const val DRAPE = "drape"
-    const val NEXO = "nexo"
-    const val PERICIA = "pericia"
-    const val CERKA = "cerka"
-    const val CHISPA = "chispa"
+    const val NEXUS = "nexus"
+    const val EXPERT = "expert"
+    const val NEAR = "near"
+    const val SPARK = "spark"
     const val VORTEX_LIST = "vortex_list"
     const val VORTEX_CHAT = "vortex_chat"
-    const val VIGIA = "vigia"
-    const val PORTON = "porton"
+    const val SENTRY = "sentry"
+    const val PORTAL = "portal"
 }
 
 @Composable
@@ -40,14 +40,13 @@ fun AppNavigation() {
         composable(AppRoutes.TASTIQUE)   { TastiqueScreen(navController) }
         composable(AppRoutes.MEDICARE)   { MediCareScreen(navController) }
         composable(AppRoutes.DRAPE)      { DrapeScreen(navController) }
-        composable(AppRoutes.NEXO)       { NexoScreen(navController) }
-        composable(AppRoutes.PERICIA)    { PericiaScreen(navController) }
-        composable(AppRoutes.CERKA)      { CerkaScreen(navController) }
-        composable(AppRoutes.CHISPA)     { ChispaScreen(navController) }
+        composable(AppRoutes.NEXUS)      { NexusScreen(navController) }
+        composable(AppRoutes.EXPERT)     { ExpertScreen(navController) }
+        composable(AppRoutes.NEAR)       { NearScreen(navController) }
+        composable(AppRoutes.SPARK)      { SparkScreen(navController) }
         composable(AppRoutes.VORTEX_LIST){ VortexListScreen(navController) }
         composable(AppRoutes.VORTEX_CHAT){ VortexChatScreen(navController) }
-        composable(AppRoutes.VIGIA)      { VigiaScreen(navController) }
-        composable(AppRoutes.PORTON)     { PortonHomeScreen(navController) }
+        composable(AppRoutes.SENTRY)     { SentryScreen(navController) }
+        composable(AppRoutes.PORTAL)     { PortalHomeScreen(navController) }
     }
 }
-

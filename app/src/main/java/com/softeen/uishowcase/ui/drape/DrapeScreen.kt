@@ -55,6 +55,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.layout.ContentScale
 import coil.compose.AsyncImage
+import androidx.compose.ui.res.stringResource
 import com.softeen.uishowcase.R
 
 // Private palette
@@ -113,14 +114,14 @@ fun DrapeScreen(navController: NavController) {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Back",
+                                contentDescription = stringResource(R.string.common_back),
                                 tint = DrapeOnBg
                             )
                         }
                     },
                     title = {
                         Text(
-                            "drape",
+                            stringResource(R.string.drape_title),
                             style = MaterialTheme.typography.headlineSmall.copy(
                                 fontStyle = FontStyle.Italic,
                                 fontWeight = FontWeight.Bold
@@ -130,11 +131,11 @@ fun DrapeScreen(navController: NavController) {
                     },
                     actions = {
                         IconButton(onClick = {}) {
-                            Icon(Icons.Default.Search, contentDescription = "Search", tint = DrapeOnBg)
+                            Icon(Icons.Default.Search, contentDescription = stringResource(R.string.common_search), tint = DrapeOnBg)
                         }
                         IconButton(onClick = {}) {
                             BadgedBox(badge = { Badge { Text("2") } }) {
-                                Icon(Icons.Default.ShoppingCart, contentDescription = "Cart", tint = DrapeOnBg)
+                                Icon(Icons.Default.ShoppingCart, contentDescription = stringResource(R.string.common_cart), tint = DrapeOnBg)
                             }
                         }
                     },
@@ -150,7 +151,7 @@ fun DrapeScreen(navController: NavController) {
                         value = "",
                         onValueChange = {},
                         readOnly = true,
-                        placeholder = { Text("Search styles, brands...", color = DrapeSubtext) },
+                        placeholder = { Text(stringResource(R.string.drape_search_placeholder), color = DrapeSubtext) },
                         leadingIcon = {
                             Icon(Icons.Default.Search, contentDescription = null, tint = DrapeSubtext)
                         },

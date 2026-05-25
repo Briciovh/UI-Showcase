@@ -50,6 +50,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import androidx.compose.ui.res.stringResource
 import com.softeen.uishowcase.R
 
 // Private palette
@@ -74,8 +75,7 @@ private fun TastiqueTheme(content: @Composable () -> Unit) {
     )
 }
 
-// Fake data
-private val categories = listOf("All", "Popular", "Pasta", "Pizza", "Burgers", "Sushi", "Desserts")
+// Fake data — category list moved into TastiqueScreen() so stringResource() is available
 
 private data class MenuItem(
     val name: String,
@@ -95,6 +95,11 @@ private val menuItems = listOf(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TastiqueScreen(navController: NavController) {
+    val categories = listOf(
+        stringResource(R.string.common_all),
+        stringResource(R.string.tastique_popular),
+        "Pasta", "Pizza", "Burgers", "Sushi", "Desserts"
+    )
     var selectedCategory by remember { mutableStateOf(0) }
 
     TastiqueTheme {
@@ -106,7 +111,7 @@ fun TastiqueScreen(navController: NavController) {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
                                 imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Back",
+                                contentDescription = stringResource(R.string.common_back),
                                 tint = TastiqueOnBg
                             )
                         }
@@ -118,7 +123,7 @@ fun TastiqueScreen(navController: NavController) {
                         IconButton(onClick = {}) {
                             Icon(
                                 imageVector = Icons.Default.ShoppingCart,
-                                contentDescription = "Cart",
+                                contentDescription = stringResource(R.string.common_cart),
                                 tint = TastiqueAmber
                             )
                         }
@@ -133,7 +138,7 @@ fun TastiqueScreen(navController: NavController) {
                         containerColor = TastiqueAmber,
                         contentColor = Color.Black
                     ) {
-                        Icon(Icons.Default.ShoppingCart, contentDescription = "Cart")
+                        Icon(Icons.Default.ShoppingCart, contentDescription = stringResource(R.string.common_cart))
                     }
                 }
             }
@@ -163,7 +168,7 @@ fun TastiqueScreen(navController: NavController) {
                                 .padding(horizontal = 10.dp, vertical = 4.dp)
                         ) {
                             Text(
-                                "Chef's Special",
+                                stringResource(R.string.tastique_chefs_special),
                                 color = Color.Black,
                                 style = MaterialTheme.typography.labelSmall
                             )

@@ -1,4 +1,4 @@
-package com.softeen.uishowcase.ui.nexo
+package com.softeen.uishowcase.ui.nexus
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -58,9 +58,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.softeen.uishowcase.R
 
 // Private palette
 private val NexoBg      = Color(0xFFF5F7FF)
@@ -145,7 +147,7 @@ private val servicios = listOf(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NexoScreen(navController: NavController) {
+fun NexusScreen(navController: NavController) {
     var catSeleccionada by remember { mutableStateOf(0) }
 
     NexoTheme {
@@ -157,14 +159,14 @@ fun NexoScreen(navController: NavController) {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
                                 Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Volver",
+                                contentDescription = stringResource(R.string.common_back),
                                 tint = NexoOnBg
                             )
                         }
                     },
                     title = {
                         Text(
-                            "nexo",
+                            stringResource(R.string.nexus_title),
                             style = MaterialTheme.typography.headlineSmall.copy(
                                 fontWeight = FontWeight.ExtraBold
                             ),
@@ -173,10 +175,10 @@ fun NexoScreen(navController: NavController) {
                     },
                     actions = {
                         IconButton(onClick = {}) {
-                            Icon(Icons.Default.Notifications, contentDescription = "Notificaciones", tint = NexoOnBg)
+                            Icon(Icons.Default.Notifications, contentDescription = stringResource(R.string.common_notifications), tint = NexoOnBg)
                         }
                         IconButton(onClick = {}) {
-                            Icon(Icons.Default.Person, contentDescription = "Perfil", tint = NexoPrimary)
+                            Icon(Icons.Default.Person, contentDescription = stringResource(R.string.common_profile), tint = NexoPrimary)
                         }
                     },
                     colors = TopAppBarDefaults.topAppBarColors(containerColor = NexoBg)
@@ -210,7 +212,7 @@ private fun UbicacionYBusqueda() {
         ) {
             Icon(Icons.Default.LocationOn, contentDescription = null, tint = NexoAccent, modifier = Modifier.size(16.dp))
             Text(
-                "Ciudad de México",
+                stringResource(R.string.nexus_city),
                 style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.SemiBold),
                 color = NexoOnBg
             )
@@ -221,7 +223,7 @@ private fun UbicacionYBusqueda() {
             value = "",
             onValueChange = {},
             readOnly = true,
-            placeholder = { Text("¿Qué servicio necesitas?", color = NexoSubtext) },
+            placeholder = { Text(stringResource(R.string.nexus_search_placeholder), color = NexoSubtext) },
             leadingIcon = { Icon(Icons.Default.Search, contentDescription = null, tint = NexoSubtext) },
             shape = RoundedCornerShape(28.dp),
             modifier = Modifier.fillMaxWidth(),
@@ -248,17 +250,17 @@ private fun BannerHero() {
     ) {
         Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
             Text(
-                "¡Bienvenido!",
+                stringResource(R.string.nexus_welcome),
                 style = MaterialTheme.typography.labelLarge,
                 color = Color.White.copy(alpha = 0.8f)
             )
             Text(
-                "Servicios profesionales\na tu alcance",
+                stringResource(R.string.nexus_hero_subtitle),
                 style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
                 color = Color.White
             )
             Text(
-                "+500 proveedores en tu ciudad",
+                stringResource(R.string.nexus_hero_caption),
                 style = MaterialTheme.typography.bodySmall,
                 color = Color.White.copy(alpha = 0.7f)
             )
@@ -270,7 +272,7 @@ private fun BannerHero() {
                 shape = RoundedCornerShape(20.dp)
             ) {
                 Text(
-                    "Explorar ahora",
+                    stringResource(R.string.nexus_explore),
                     style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold)
                 )
             }
@@ -282,7 +284,7 @@ private fun BannerHero() {
 private fun SeccionCategorias(seleccionada: Int, onSeleccionar: (Int) -> Unit) {
     Column(modifier = Modifier.padding(top = 20.dp)) {
         Text(
-            "Categorías",
+            stringResource(R.string.nexus_categories),
             style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
             color = NexoOnBg,
             modifier = Modifier.padding(horizontal = 16.dp)
@@ -322,12 +324,12 @@ private fun SeccionProveedores() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                "Proveedores destacados",
+                stringResource(R.string.nexus_featured_providers),
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                 color = NexoOnBg
             )
             TextButton(onClick = {}) {
-                Text("Ver todos", style = MaterialTheme.typography.labelMedium, color = NexoPrimary)
+                Text(stringResource(R.string.common_view_all), style = MaterialTheme.typography.labelMedium, color = NexoPrimary)
             }
         }
         Spacer(Modifier.height(10.dp))
@@ -397,12 +399,12 @@ private fun SeccionServicios() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                "Servicios populares",
+                stringResource(R.string.nexus_popular_services),
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
                 color = NexoOnBg
             )
             TextButton(onClick = {}) {
-                Text("Ver todos", style = MaterialTheme.typography.labelMedium, color = NexoPrimary)
+                Text(stringResource(R.string.common_view_all), style = MaterialTheme.typography.labelMedium, color = NexoPrimary)
             }
         }
         Spacer(Modifier.height(10.dp))

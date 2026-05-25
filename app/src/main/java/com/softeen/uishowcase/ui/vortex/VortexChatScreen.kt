@@ -40,11 +40,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.softeen.uishowcase.R
 
 // ── Private palette (file-private; same values as VortexListScreen) ───────────
 private val VxFondo    = Color(0xFF080C18)
@@ -147,7 +149,7 @@ fun VortexChatScreen(navController: NavController) {
                         IconButton(onClick = { navController.popBackStack() }) {
                             Icon(
                                 Icons.AutoMirrored.Filled.ArrowBack,
-                                contentDescription = "Volver",
+                                contentDescription = stringResource(R.string.common_back),
                                 tint = VxPrimario
                             )
                         }
@@ -197,7 +199,7 @@ fun VortexChatScreen(navController: NavController) {
                                     color = Color.White
                                 )
                                 Text(
-                                    "En línea",
+                                    stringResource(R.string.vortex_online),
                                     style = MaterialTheme.typography.labelSmall,
                                     color = VxOnline
                                 )
@@ -217,6 +219,7 @@ fun VortexChatScreen(navController: NavController) {
             },
             bottomBar = { BarraInput() }
         ) { innerPadding ->
+            val encryptedNotice = stringResource(R.string.vortex_encrypted)
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(
@@ -230,7 +233,7 @@ fun VortexChatScreen(navController: NavController) {
                 item { SeparadorFecha("Viernes, 23 de mayo") }
                 items(mensajes) { msg ->
                     when {
-                        msg.esInfo -> MsgInfo(msg.texto)
+                        msg.esInfo -> MsgInfo(encryptedNotice)
                         msg.esVoz  -> MsgVoz(msg)
                         else       -> MsgBurbuja(msg)
                     }
@@ -466,7 +469,7 @@ private fun BarraInput() {
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text("Mensaje…", style = MaterialTheme.typography.bodyMedium, color = VxSubtext)
+            Text(stringResource(R.string.vortex_message_placeholder), style = MaterialTheme.typography.bodyMedium, color = VxSubtext)
             Text("😊", fontSize = 18.sp)
         }
         // Send button with gradient
