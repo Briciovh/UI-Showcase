@@ -16,6 +16,7 @@ import com.softeen.uishowcase.ui.vortex.VortexListScreen
 import com.softeen.uishowcase.ui.vortex.VortexChatScreen
 import com.softeen.uishowcase.ui.sentry.SentryScreen
 import com.softeen.uishowcase.ui.portal.PortalHomeScreen
+import com.softeen.uishowcase.ui.movra.MovraScreen
 
 object AppRoutes {
     const val HUB = "hub"
@@ -30,6 +31,7 @@ object AppRoutes {
     const val VORTEX_CHAT = "vortex_chat"
     const val SENTRY = "sentry"
     const val PORTAL = "portal"
+    const val MOVRA = "movra"
 }
 
 @Composable
@@ -48,5 +50,6 @@ fun AppNavigation() {
         composable(AppRoutes.VORTEX_CHAT){ VortexChatScreen(navController) }
         composable(AppRoutes.SENTRY)     { SentryScreen(navController) }
         composable(AppRoutes.PORTAL)     { PortalHomeScreen(navController) }
+        composable(AppRoutes.MOVRA)      { MovraScreen(navController) }
     }
 }

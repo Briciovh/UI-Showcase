@@ -23,6 +23,7 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Place
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.Lock
@@ -57,6 +58,7 @@ import com.softeen.uishowcase.ui.theme.TastiqueAmber
 import com.softeen.uishowcase.ui.theme.VortexCyan
 import com.softeen.uishowcase.ui.theme.VigiaBlue
 import com.softeen.uishowcase.ui.theme.PortonBlue
+import com.softeen.uishowcase.ui.theme.MovraAccent
 
 @Composable
 fun HubScreen(navController: NavController) {
@@ -71,6 +73,7 @@ fun HubScreen(navController: NavController) {
         Triple(stringResource(R.string.vortex_title),   stringResource(R.string.industry_messaging),          VortexCyan    to (Icons.AutoMirrored.Filled.Send   to AppRoutes.VORTEX_LIST)),
         Triple(stringResource(R.string.sentry_title),   stringResource(R.string.industry_child_safety),       VigiaBlue     to (Icons.Default.LocationOn         to AppRoutes.SENTRY)),
         Triple(stringResource(R.string.portal_title),   stringResource(R.string.industry_neighborhood_access),PortonBlue    to (Icons.Default.Lock               to AppRoutes.PORTAL)),
+        Triple(stringResource(R.string.movra_title),    stringResource(R.string.industry_ride_hailing),       MovraAccent   to (Icons.Default.Place              to AppRoutes.MOVRA)),
     )
     Scaffold { innerPadding ->
         LazyColumn(

@@ -14,6 +14,7 @@ A polished collection of distinct UI design systems implemented in Jetpack Compo
 - **Edge-to-Edge Experience**: Modern immersive UI implementation using `enableEdgeToEdge()`.
 - **Performance Optimized**: Built with standard Material 3 icons and efficient layout strategies (no `material-icons-extended` bloat).
 - **Navigation Driven**: Centralized hub connecting disparate design paradigms.
+- **Multilingual**: English, Spanish and Portuguese, switchable from the Hub at runtime.
 
 ---
 
@@ -54,6 +55,28 @@ A polished collection of distinct UI design systems implemented in Jetpack Compo
 - **Accent**: Rose (`#FF4B81`)
 - **Vibe**: Vibrant, premium, and engaging.
 
+### 💬 Vortex (Dark Mode)
+*Focus: Instant Messaging*
+- **Accent**: Cyan (`#00D4FF`) with Purple (`#7C3AED`)
+- **Vibe**: Futuristic, fast, and fluid. Includes a conversation list and a chat screen.
+
+### 🧭 Vigía (Light Mode)
+*Focus: Child Safety*
+- **Accent**: Blue (`#1565C0`)
+- **Vibe**: Calm, reassuring, and protective.
+
+### 🚪 Portón (Light Mode)
+*Focus: Neighborhood Access*
+- **Accent**: Steel Blue (`#1A5276`)
+- **Vibe**: Secure, simple, and one-tap.
+
+### 🚕 Movra (Dark Mode)
+*Focus: Ride Hailing*
+- **Accent**: Electric Lime (`#C6F432`)
+- **Vibe**: Nocturnal, fast, and map-first. A full-screen animated night map under a draggable bottom sheet, with a Rider/Driver switch (ride selection, payment chips, incoming-trip countdown, fare and platform-fee breakdown, weekly earnings).
+
+> Brand names for some showcases are localized (e.g. Chispa is Spark in English and Faísca in Portuguese). The code keeps the original names for packages and routes.
+
 ---
 
 ## 🛠 Tech Stack
@@ -90,9 +113,12 @@ git clone https://github.com/your-username/UIShowcase.git
 ## 🏗 Project Structure
 
 - `ui/hub/`: The gateway screen for all showcases.
-- `ui/tastique/`, `ui/medicare/`, `ui/drape/`: Individual showcase implementations (self-contained logic & theme).
+- `ui/tastique/`, `ui/medicare/`, `ui/drape/`, `ui/nexus/`, `ui/expert/`, `ui/near/`, `ui/spark/`, `ui/vortex/`, `ui/sentry/`, `ui/portal/`, `ui/movra/`: Individual showcase implementations (self-contained logic & theme).
 - `navigation/`: Centralized routing logic.
-- `theme/`: Global typography and shared color tokens.
+- `ui/theme/`: Global typography and shared color tokens (one accent per showcase).
+- `res/values*/`: Strings in English (default), Spanish (`values-es`) and Portuguese (`values-pt`).
+
+See `CLAUDE.md` for the full screen catalog and the checklist for adding a new showcase.
 
 ---
 
