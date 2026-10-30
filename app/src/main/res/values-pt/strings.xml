@@ -13,9 +13,11 @@
     <string name="industry_messaging">Mensagem Instantânea</string>
     <string name="industry_child_safety">Segurança Infantil</string>
     <string name="industry_neighborhood_access">Acesso de Vizinhança</string>
+    <string name="industry_ride_hailing">Mobilidade por app</string>
 
     <!-- Portal Screen -->
     <string name="portal_title">Portão</string>
+    <string name="movra_title">Movra</string>
     <string name="portal_welcome">Bem-vindo,</string>
     <string name="portal_apt">Apt. 4B · Edifício San Marco</string>
     <string name="portal_status_closed">🔴 Fechado</string>
@@ -168,5 +170,35 @@
     <string name="vortex_online">Online</string>
     <string name="vortex_message_placeholder">Mensagem…</string>
     <string name="vortex_encrypted">🔒  As mensagens estão criptografadas de ponta a ponta</string>
+
+    <string name="movra_mode_rider">Passageiro</string>
+    <string name="movra_mode_driver">Motorista</string>
+    <string name="movra_where_to">Para onde vamos?</string>
+    <string name="movra_pickup">Embarque</string>
+    <string name="movra_dropoff">Destino</string>
+    <string name="movra_choose_ride">Escolha sua viagem</string>
+    <string name="movra_ride_meta">%1$d lugares · a %2$d min</string>
+    <string name="movra_payment">Pagamento</string>
+    <string name="movra_cash">Dinheiro</string>
+    <string name="movra_add_promo">Adicionar cupom</string>
+    <string name="movra_request_ride">Pedir %1$s</string>
+    <string name="movra_searching_driver">Procurando um motorista próximo…</string>
+    <string name="movra_online">Você está online</string>
+    <string name="movra_offline">Você está offline</string>
+    <string name="movra_online_hint">Recebendo pedidos de viagem próximos</string>
+    <string name="movra_offline_hint">Fique online para começar a receber viagens</string>
+    <string name="movra_new_request">Nova solicitação de viagem</string>
+    <string name="movra_pickup_distance">A %1$s km do embarque</string>
+    <string name="movra_fare_trip">Tarifa da viagem</string>
+    <string name="movra_fare_fee">Taxa da plataforma (%1$d%%)</string>
+    <string name="movra_fare_net">Você recebe</string>
+    <string name="movra_accept">Aceitar</string>
+    <string name="movra_decline">Recusar</string>
+    <string name="movra_trip_accepted">Viagem aceita. Siga até o ponto de embarque.</string>
+    <string name="movra_trip_declined">Solicitação recusada</string>
+    <string name="movra_earnings_today">Ganhos de hoje</string>
+    <string name="movra_trips_count">%1$d viagens</string>
+    <string name="movra_this_week">Esta semana</string>
+    <string name="movra_week_days">S,T,Q,Q,S,S,D</string>
 
 </resources>

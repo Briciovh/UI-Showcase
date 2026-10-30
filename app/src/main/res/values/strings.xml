@@ -13,9 +13,11 @@
     <string name="industry_messaging">Instant Messaging</string>
     <string name="industry_child_safety">Child Safety</string>
     <string name="industry_neighborhood_access">Neighborhood Access</string>
+    <string name="industry_ride_hailing">Ride Hailing</string>
 
     <!-- Portal Screen -->
     <string name="portal_title">Portal</string>
+    <string name="movra_title">Movra</string>
     <string name="portal_welcome">Welcome,</string>
     <string name="portal_apt">Apt. 4B · San Marco Building</string>
     <string name="portal_status_closed">🔴 Closed</string>
@@ -168,5 +170,35 @@
     <string name="vortex_online">Online</string>
     <string name="vortex_message_placeholder">Message…</string>
     <string name="vortex_encrypted">🔒  Messages are end-to-end encrypted</string>
+
+    <string name="movra_mode_rider">Rider</string>
+    <string name="movra_mode_driver">Driver</string>
+    <string name="movra_where_to">Where to?</string>
+    <string name="movra_pickup">Pickup</string>
+    <string name="movra_dropoff">Drop-off</string>
+    <string name="movra_choose_ride">Choose a ride</string>
+    <string name="movra_ride_meta">%1$d seats · %2$d min away</string>
+    <string name="movra_payment">Payment</string>
+    <string name="movra_cash">Cash</string>
+    <string name="movra_add_promo">Add promo</string>
+    <string name="movra_request_ride">Request %1$s</string>
+    <string name="movra_searching_driver">Looking for a nearby driver…</string>
+    <string name="movra_online">You\'re online</string>
+    <string name="movra_offline">You\'re offline</string>
+    <string name="movra_online_hint">Receiving trip requests nearby</string>
+    <string name="movra_offline_hint">Go online to start receiving trips</string>
+    <string name="movra_new_request">New trip request</string>
+    <string name="movra_pickup_distance">%1$s km to pickup</string>
+    <string name="movra_fare_trip">Trip fare</string>
+    <string name="movra_fare_fee">Platform fee (%1$d%%)</string>
+    <string name="movra_fare_net">You earn</string>
+    <string name="movra_accept">Accept</string>
+    <string name="movra_decline">Decline</string>
+    <string name="movra_trip_accepted">Trip accepted. Head to the pickup point.</string>
+    <string name="movra_trip_declined">Request declined</string>
+    <string name="movra_earnings_today">Today\'s earnings</string>
+    <string name="movra_trips_count">%1$d trips</string>
+    <string name="movra_this_week">This week</string>
+    <string name="movra_week_days">M,T,W,T,F,S,S</string>
 
 </resources>
